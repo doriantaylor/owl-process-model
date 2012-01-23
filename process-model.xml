@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="/transform"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#"
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:bibo="http://purl.org/ontology/bibo/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:event="http://purl.org/NET/c4dm/event.owl#"
+      xmlns:pm="http://privatealpha.com/ontology/process-model/1#"
+      version="XHTML+RDFa 1.0" xml:lang="en">
+  <head>
+    <title about="#" property="dc:title">PrivateAlpha Process Model</title>
+    <base href="http://privatealpha.com/ontology/process-model/1"/>
+    <link about="#" rel="rdfs:isDefinedBy bibo:uri" href="#"/>
+  </head>
+  <body>
+    <div about="#" typeof="owl:Ontology bibo:Webpage">
+      <div property="rdfs:comment">
+        <p>This is the ontology for the process model.</p>
+        <p><a rel="external owl:imports" href="http://purl.org/NET/c4dm/event.owl#">Event Ontology</a></p>
+      </div>
+    </div>
+    <div id="State" about="[pm:State]" typeof="owl:Class">
+      <h2 property="rdfs:label">State</h2>
+      <p property="rdfs:comment">A state can be understood as a snapshot of a system at a given time, such as before or after an event.</p>
+      <dl>
+        <dt>Disjoint with:</dt>
+        <dd><a rel="external owl:disjointWith" href="http://purl.org/NET/c4dm/event.owl#Event">event:Event</a></dd>
+      </dl>
+    </div>
+    <div id="Objective" about="[pm:Objective]" typeof="owl:Class">
+      <h2 property="rdfs:label">Objective</h2>
+      <dl>
+        <dt>Subclass of:</dt>
+        <dd><a rel="rdfs:subClassOf" href="#State">pm:State</a></dd>
+        <dt>Complement of:</dt>
+        <dd><a rel="owl:complementOf" href="#Problem">pm:Problem</a></dd>
+      </dl>
+      <p property="rdfs:comment">An objective is a state which is desired by a principal. As it is a state, an objective is not actionable itself, although tasks, which are actions, must have at least one objective. An objective is a complement to a problem.</p>
+      <h3>Properties</h3>
+      <ul>
+        <li><a rev="rdfs:domain" href="#principal">pm:principal</a></li>
+      </ul>
+    </div>
+    <div id="Problem" about="[pm:Problem]" typeof="owl:Class">
+      <h2 property="rdfs:label">Problem</h2>
+      <dl>
+        <dt>Subclass of:</dt>
+        <dd><a rel="rdfs:subClassOf" href="#State">pm:State</a></dd>
+        <dt>Complement of:</dt>
+        <!--<dd><a rel="owl:complementOf" href="#Objective">pm:Objective</a></dd>-->
+        <dd rel="owl:complementOf"><span about="eea6f581-9ff3-4bb5-bc3f-c1efcccf5599" typeof="owl:Class">{ <a rel="owl:unionOf" href="#Objective">pm:Objective</a> &#x222a; <a rel="owl:unionOf" href="#Requirement">pm:Requirement</a> }</span></dd>
+      </dl>
+      <p property="rdfs:comment">A problem is a state which a principal wishes to solve. A problem is not actionable itself, but appropriate tasks will achieve the objective of solving a problem. A problem can be seen as the complement of an objective.</p>
+      <h3>Properties</h3>
+      <ul>
+        <li><a rev="rdfs:domain" href="#principal">pm:principal</a></li>
+      </ul>
+    </div>
+    <div id="Action" about="[pm:Action]" typeof="owl:Class">
+      <h2 property="rdfs:label">Action</h2>
+      <p property="rdfs:comment">An action specializes an event in that its agent is (at least one) real living person.</p>
+      <dl>
+        <dt>Subclass of:</dt>
+        <dd><a rel="external rdfs:subClassOf" href="http://purl.org/NET/c4dm/event.owl#Event">event:Event</a></dd>
+        <dt>Disjoint with:</dt>
+        <dd><a rel="owl:disjointWith" href="#State">pm:State</a></dd>
+      </dl>
+    </div>
+    <div id="Task" about="[pm:Task]" typeof="owl:Class">
+      <h2 property="rdfs:label">Task</h2>
+      <p property="rdfs:comment">A task specializes an action in that it has one or more objectives.</p>
+      <dl>
+        <dt>Subclass of:</dt>
+        <dd><a rel="rdfs:subClassOf" href="#Action">pm:Action</a></dd>
+      </dl>
+      <h3>Properties</h3>
+      <ul>
+        <li><a rev="rdfs:domain" href="#objective">pm:objective</a></li>
+        <li><a rev="rdfs:domain" href="#rationale">pm:rationale</a></li>
+        <li><a rev="rdfs:domain" href="#performer">pm:performer</a></li>
+        <li><a rev="rdfs:domain" href="#recipient">pm:recipient</a></li>
+        <li><a rev="rdfs:domain" href="#context">pm:context</a></li>
+        <li><a rev="rdfs:domain" href="#input">pm:input</a></li>
+        <li><a rev="rdfs:domain" href="#method">pm:method</a></li>
+        <li><a rev="rdfs:domain" href="#expected-result">pm:expected-result</a></li>
+        <li><a rev="rdfs:domain" href="#actual-result">pm:actual-result</a></li>
+        <li><a rev="rdfs:domain" href="#expected-duration">pm:expected-duration</a></li>
+        <li><a rev="rdfs:domain" href="#actual-duration">pm:actual-duration</a></li>
+      </ul>
+    </div>
+    <!--
+    <div id="Context" about="[pm:Context]" typeof="owl:Class">
+      <h2 property="rdfs:label">Context</h2>
+      <p property="rdfs:comment">A context is the environment and available resources which are required for a task to succeed.</p>
+      <h3>Properties</h3>
+      <ul>
+        <li>???</li>
+      </ul>
+    </div>-->
+    <div id="Question" about="[pm:Question]" typeof="owl:Class">
+      <h2 property="rdfs:label">Question</h2>
+      <p property="rdfs:comment">yo dawg</p>
+      <dl>
+        <dt>Subclass of:</dt>
+        <dd><a rel="external rdfs:subClassOf" href="http://purl.org/ontology/bibo/Note">bibo:Note</a></dd>
+      </dl>
+      <h3>Properties</h3>
+      <ul>
+        <li><a rev="rdfs:domain" href="#assignee">pm:assignee</a></li>
+      </ul>
+    </div>
+    <div id="Answer" about="[pm:Answer]" typeof="owl:Class">
+      <h2 property="rdfs:label">Answer</h2>
+      <p property="rdfs:comment">yo dawg yo</p>
+      <dl>
+        <dt>Subclass of:</dt>
+        <dd><a rel="external rdfs:subClassOf" href="http://purl.org/ontology/bibo/Note">bibo:Note</a></dd>
+      </dl>
+      <h3>Properties</h3>
+      <ul>
+        <li><a rev="rdfs:domain" href="#answers">pm:answers</a></li>
+      </ul>
+    </div>
+    <div id="objective" about="[pm:objective]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">objective</h2>
+    </div>
+    <div id="rationale" about="[pm:rationale]" typeof="owl:DatatypeProperty">
+      <h2 property="rdfs:label">rationale</h2>
+      <p property="rdfs:comment">The rationale property attempts to justify the task, ideally explaining how it will achieve the task's objectives.</p>
+      <dl>
+        <dt>Domain:</dt>
+        <dd><a rel="rdfs:domain" href="#Task">pm:Task</a></dd>
+      </dl>
+    </div>
+    <div id="performer" about="[pm:performer]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">performer</h2>
+      <p property="rdfs:comment">A performer is a real, live (at the time of performance) person who performs a task.</p>
+      <dl>
+        <dt>Sub-property of:</dt>
+        <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#agent">event:agent</a></dd>
+        <dt>Domain:</dt>
+        <dd><a rel="rdfs:domain" href="#Task">pm:Task</a></dd>
+        <dt>Range:</dt>
+        <dd><a rel="external rdfs:range" href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></dd>
+      </dl>
+    </div>
+    <div id="recipient" about="[pm:recipient]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">recipient</h2>
+      <p property="rdfs:comment">A recipient of a task is a (real, live at the time of receipt) person who receives and approves its product or products.</p>
+      <dl>
+        <dt>Domain:</dt>
+        <dd><a rel="rdfs:domain" href="#Task">pm:Task</a></dd>
+        <dt>Range:</dt>
+        <dd><a rel="external rdfs:range" href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></dd>
+      </dl>
+    </div>
+    <div id="context" about="[pm:context]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">context</h2>
+      <dl>
+        <dt>Sub-property of:</dt>
+        <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#factor">event:factor</a></dd>
+      </dl>
+    </div>
+    <div id="input" about="[pm:input]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">input</h2>
+    </div>
+    <div id="method" about="[pm:method]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">method</h2>
+    </div>
+    <div id="expected-result" about="[pm:expected-result]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">expected-result</h2>
+      <dl>
+        <dt>Sub-property of:</dt>
+        <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#product">event:product</a></dd>
+      </dl>
+    </div>
+    <div id="actual-result" about="[pm:actual-result]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">actual-result</h2>
+      <dl>
+        <dt>Sub-property of:</dt>
+        <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#product">event:product</a></dd>
+      </dl>
+    </div>
+    <div id="expected-duration" about="[pm:expected-duration]" typeof="owl:DatatypeProperty">
+      <h2 property="rdfs:label">expected-duration</h2>
+    </div>
+    <div id="actual-duration" about="[pm:actual-duration]" typeof="owl:DatatypeProperty">
+      <h2 property="rdfs:label">actual-duration</h2>
+    </div>
+    <div id="assignee" about="[pm:assignee]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">assignee</h2>
+      <dl>
+        <dt>Domain:</dt>
+        <dd><a rel="rdfs:domain" href="#Question">pm:Question</a></dd>
+        <dt>Range:</dt>
+        <dd><a rel="external rdfs:range" href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></dd>
+      </dl>
+    </div>
+    <div id="answers" about="[pm:answers]" typeof="owl:ObjectProperty">
+      <h2 property="rdfs:label">answers</h2>
+      <dl>
+        <dt>Sub-property of:</dt>
+        <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/ontology/bibo/annotates">bibo:annotates</a></dd>
+        <dt>Domain:</dt>
+        <dd><a rel="rdfs:domain" href="#Answer">pm:Answer</a></dd>
+        <dt>Range:</dt>
+        <dd><a rel="rdfs:range" href="#Question">pm:Question</a></dd>
+      </dl>
+    </div>
+  </body>
+</html>
