@@ -1,0 +1,45 @@
+digraph {
+    graph [bgcolor=transparent,overlap=false,rankdir="TB"];
+    node [shape=box,color="#eeeeee",fontcolor="#eeeeee",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+    edge [color="#eeeeee",fontcolor="#eeeeee",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+    subgraph {
+        node [style=dashed];
+        ev_agent [label="ev:agent"];
+        ev_factor [label="ev:factor"];
+        ev_product [label="ev:product"];
+        ev_sub_event [label="ev:sub_event"];
+        ibis_endorses [label="ibis:endorses"];
+        ibis_response [label="ibis:response"];
+        ibis_responds_to [label="ibis:responds-to"];
+        ibis_specializes [label="ibis:specializes"];
+    }
+
+pm_achieves [label="pm:achieves"];
+pm_anchors [label="pm:anchors"];
+//pm_budget [label="pm:budget"];
+pm_context [label="pm:context"];
+pm_desires [label="pm:desires"];
+//pm_due [label="pm:due"];
+pm_initiates [label="pm:initiates"];
+//pm_method [label="pm:method"];
+pm_outcome [label="pm:outcome"];
+pm_performer [label="pm:performer"];
+//pm_recipient [label="pm:recipient"];
+pm_responsible [label="pm:responsible"];
+pm_subtask [label="pm:subtask"];
+pm_variant [label="pm:variant"];
+
+    subgraph {
+        edge [style=dashed];
+        ev_factor -> pm_context;
+        ev_product -> pm_outcome -> pm_achieves;
+        ev_agent -> pm_performer;
+        ev_agent -> pm_responsible;
+        ev_sub_event -> pm_subtask;
+        ev_sub_event -> pm_variant;
+        ibis_endorses -> pm_desires;
+        ibis_response -> pm_initiates;
+        ibis_responds_to -> pm_achieves;
+        ibis_specializes -> pm_anchors;
+    }
+}

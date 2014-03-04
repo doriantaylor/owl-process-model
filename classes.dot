@@ -1,0 +1,28 @@
+digraph {
+    graph [bgcolor=transparent,overlap=false,rankdir="LR"];
+    node [shape=box,color="#eeeeee",fontcolor="#eeeeee",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+    edge [color="#eeeeee",fontcolor="#eeeeee",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+    subgraph {
+        node [style=dashed];
+        skos_Concept [label="skos:Concept"];
+        ev_Event [label="ev:Event"];
+        ibis_Issue [label="ibis:Issue"];
+        ibis_Position [label="ibis:Position"];
+    }
+
+    pm_State [label="pm:State"];
+    pm_Goal [label="pm:Goal"];
+    pm_Target [label="pm:Target"];
+    pm_Action [label="pm:Action"];
+    pm_Task [label="pm:Task"];
+    pm_Method [label="pm:Method"];
+
+    subgraph {
+        edge [style=dashed];
+        skos_Concept -> pm_State -> pm_Goal -> pm_Target;
+        skos_Concept -> ibis_Issue -> pm_Goal;
+        skos_Concept -> ibis_Position -> pm_Task;
+        ev_Event -> pm_Action -> pm_Task;
+        pm_Action -> pm_Method;
+    }
+}

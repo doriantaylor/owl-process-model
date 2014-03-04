@@ -1,0 +1,151 @@
+digraph {
+    graph [bgcolor=transparent,overlap=false];
+    node [shape=box,color="#eeeeee",fontcolor="#eeeeee",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+    edge [color="#eeeeee",fontcolor="#eeeeee",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+    //node [shape=box,color="black",fontcolor="black",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+    //edge [color="black",fontcolor="black",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+
+    foaf_Person [label="foaf:Person", style=dashed];
+    foaf_Agent [label="foaf:Agent", style=dashed];
+    skos_Concept [label="skos:Concept", style=dashed];
+    ev_Event [label="ev:Event", style=dashed];
+    //xsd_dateTime [label="xsd:dateTime", style=dashed];
+    
+    subgraph {
+        //graph [rank=same];
+        ibis_Issue [label="ibis:Issue", style=dashed];
+        ibis_Position [label="ibis:Position", style=dashed];
+        ibis_Argument [label="ibis:Argument", style=dashed];
+    }
+    subgraph {
+     ///   graph [rank=same];
+     time_Instant [label="time:Instant", style=dashed];
+        //time_DurationDescription [label="time:DurationDescription", style=dashed];
+    }
+    owl_Thing [label="owl:Thing", style=dashed];
+    xsd_decimal [label="xsd:decimal", style=dashed];
+    
+    pm_State [label="pm:State"];
+    pm_Goal [label="pm:Goal"];
+    pm_Target [label="pm:Target"];
+    pm_Action [label="pm:Action"];
+    pm_Task [label="pm:Task"];
+    pm_Method [label="pm:Method"];
+    
+    subgraph {
+        edge [fontsize=10,concentrate=true];
+        //ibis_Issue -> ibis_Issue [label="ibis:specializes"];
+        //ibis_Issue -> ibis_Issue [label="ibis:generalizes"];
+        //ibis_Issue -> ibis_Issue [label="ibis:replaces"];
+        //ibis_Issue -> ibis_Issue [label="ibis:generalizes"];
+        
+        subgraph {
+            edge [label="rdfs:subClassOf", style=dashed];
+            pm_Target -> pm_Goal -> pm_State -> skos_Concept;
+            pm_Goal -> ibis_Issue -> skos_Concept;
+            pm_Method -> pm_Action;
+            pm_Task -> pm_Action -> ev_Event;
+            pm_Task -> ibis_Position -> skos_Concept;
+            ibis_Argument -> ibis_Issue;
+            foaf_Person -> foaf_Agent;
+        }
+        subgraph {
+            edge [label="ibis:supported-by", style=dashed];
+            pm_Task -> ibis_Argument;
+        }
+        subgraph {
+            edge [label="ev:factor", style=dashed];
+            ev_Event -> owl_Thing;
+        }
+        subgraph {
+            edge [label="ev:product", style=dashed];
+            ev_Event -> owl_Thing;
+        }
+        subgraph {
+            edge [label="ev:agent", style=dashed];
+            ev_Event -> foaf_Agent;
+        }
+        
+        //
+        subgraph {
+            edge [label="pm:anchors", weight=5];
+            pm_Target -> pm_Goal;
+        }
+        subgraph {
+            edge [label="pm:achieves"];
+            pm_Task -> pm_Goal;
+        }
+        subgraph {
+            edge [label="pm:subtask"];
+            pm_Task -> pm_Task;
+        }
+        subgraph {
+            edge [label="pm:initiates"];
+            pm_Target -> pm_Task;
+        }
+        subgraph {
+            edge [label="pm:due", weight=0.5];
+            pm_Target -> time_Instant;
+        }
+        subgraph {
+            edge [label="pm:budget", weight=0.5];
+            pm_Target -> xsd_decimal;
+        }
+        subgraph {
+            edge [label="pm:desires"];
+            //pm_Goal -> foaf_Agent;
+            foaf_Agent -> pm_Goal;
+        }
+        subgraph {
+            edge [label="pm:context"];
+            pm_Action -> pm_State;
+        }
+        subgraph {
+            edge [label="pm:outcome"];
+            ev_Event -> pm_State;
+        }
+        subgraph {
+            edge [label="pm:performer"];
+            pm_Action -> foaf_Person;
+        }
+        subgraph {
+            edge [label="pm:responsible"];
+            pm_Task -> foaf_Person;
+        }
+        subgraph {
+            edge [label="pm:recipient"];
+            pm_Task -> foaf_Person;
+        }
+        subgraph {
+            edge [label="pm:method"];
+            pm_Action -> pm_Method;
+        }
+        subgraph {
+            edge [label="pm:variant"];
+            pm_Action -> pm_Action;
+        }
+
+        /*
+        subgraph {
+            edge [label="pm:context"];
+            pm_Action -> owl_Thing;
+        }*/
+        /*
+        subgraph {
+            edge [label="pm:expected-duration"];
+            pm_Task -> time_DurationDescription;
+        }
+        subgraph {
+            edge [label="pm:actual-duration"];
+            pm_Task -> time_DurationDescription;
+        }
+        subgraph {
+            edge [label="pm:expected-result"];
+            pm_Task -> owl_Thing;
+        }
+        subgraph {
+            edge [label="pm:actual-result"];
+            pm_Task -> owl_Thing;
+        }*/
+    }
+}
