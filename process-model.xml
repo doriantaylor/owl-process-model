@@ -11,12 +11,12 @@
       xmlns:ev="http://purl.org/NET/c4dm/event.owl#"
       xmlns:skos="http://www.w3.org/2004/02/skos/core#"
       xmlns:vann="http://purl.org/vocab/vann/"
-      xmlns:ibis="https://privatealpha.com/ontology/ibis/1#"
-      xmlns:pm="https://privatealpha.com/ontology/process-model/1#"
+      xmlns:ibis="https://vocab.methodandstructure.com/ibis#"
+      xmlns:pm="https://vocab.methodandstructure.com/process-model#"
       version="XHTML+RDFa 1.0" xml:lang="en">
   <head>
     <title about="#" property="dc:title">A Process Model Ontology</title>
-    <base href="https://privatealpha.com/ontology/process-model/1"/>
+    <base href="https://vocab.methodandstructure.com/process-model"/>
     <link about="#" rel="rdfs:isDefinedBy bibo:uri" href="#"/>
   </head>
   <body typeof="bibo:Webpage">
@@ -32,12 +32,12 @@
         <dd property="dct:modified" datatype="xsd:dateTime" content="2017-04-06T22:24:06Z">April 6, 2017</dd>
         <dd property="dct:modified" datatype="xsd:dateTime" content="2020-03-08T18:58:53Z">March 8, 2020</dd>
         <dt>Namespace URI</dt>
-        <dd><a href="#">https://privatealpha.com/ontology/process-model/1#</a></dd>
+        <dd><a href="#">https://vocab.methodandstructure.com/process-model#</a></dd>
         <dt>Preferred Namespace Prefix</dt>
         <dd about="#" property="vann:preferredNamespacePrefix" datatype="xsd:string">pm</dd>
       </dl>
       <section>
-        <p><span property="rdfs:comment">This vocabulary encodes a model for expressing generic business processes. Its purpose is to provide a language and exchange format for software applications designed to facilitate project management.</span> This vocabulary extends <a href="https://privatealpha.com/ontology/ibis/1#">the IBIS vocabulary</a> in the natural fashion that once we have framed an issue and decided to solve it, we must then specify a method, nominate a person responsible, and allocate time and material resources to carry out the solution.<!-- It likewise provides a mechanism for developing and encoding the method by which a solution is carried out.--></p>
+        <p><span property="rdfs:comment">This vocabulary encodes a model for expressing generic business processes. Its purpose is to provide a language and exchange format for software applications designed to facilitate project management.</span> This vocabulary extends <a href="https://vocab.methodandstructure.com/ibis#">the IBIS vocabulary</a> in the natural fashion that once we have framed an issue and decided to solve it, we must then specify a method, nominate a person responsible, and allocate time and material resources to carry out the solution.<!-- It likewise provides a mechanism for developing and encoding the method by which a solution is carried out.--></p>
         <object style="display: block; margin: auto; max-width: 100%; height: auto" type="image/svg+xml" data="example.svg"><img src="example" alt=""/></object>
         <section>
           <h2>Goal, Task, Target</h2>
@@ -52,7 +52,7 @@
         </section>
         <p>This process model vocabulary connects and extends the following vocabularies:</p>
         <ul>
-        <li><a rel="owl:imports" href="https://privatealpha.com/ontology/ibis/1#">The IBIS (bis) Vocabulary</a></li>
+        <li><a rel="owl:imports" href="https://vocab.methodandstructure.com/ibis#">The IBIS (bis) Vocabulary</a></li>
           <li><a rel="external owl:imports" href="http://purl.org/NET/c4dm/event.owl#">The Event Ontology</a></li>
           <li><a rel="external owl:imports" href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></li>
         </ul>
@@ -61,8 +61,8 @@
     <section>
       <h2>Classes</h2>
       <p>The classes in this vocabulary are refined as follows:</p>
-      <object style="display: block; margin: auto; max-width: 100%; height: auto" type="image/svg+xml" data="classes.svg"><img src="classes" alt=""/></object>
-      <p>The central concepts, <a href="#Goal">pm:Goal</a> and <a href="#Task">pm:Task</a>, extend the <a href="https://privatealpha.com/ontology/ibis/1#Issue">ibis:Issue</a> and <a href="https://privatealpha.com/ontology/ibis/1#Position">ibis:Position</a> types, so that goals, tasks and targets can be mixed into, as well as graduated from, generic collaborative argumentation and decision-making sessions. Likewise, the <a href="#Action">pm:Action</a> class extends <a rel="external" href="http://motools.sourceforge.net/event/event.html#term_Event">ev:Event</a> so that actions and tasks can be mixed in with generic events on a timeline.</p>
+      <object style="display: block; margin: auto; max-width: 100%; height: auto" type="image/svg+xml" data="process-model-classes.svg"><img src="process-model-classes" alt=""/></object>
+      <p>The central concepts, <a href="#Goal">pm:Goal</a> and <a href="#Task">pm:Task</a>, extend the <a href="https://vocab.methodandstructure.com/ibis#Issue">ibis:Issue</a> and <a href="https://vocab.methodandstructure.com/ibis#Position">ibis:Position</a> types, so that goals, tasks and targets can be mixed into, as well as graduated from, generic collaborative argumentation and decision-making sessions. Likewise, the <a href="#Action">pm:Action</a> class extends <a rel="external" href="http://motools.sourceforge.net/event/event.html#term_Event">ev:Event</a> so that actions and tasks can be mixed in with generic events on a timeline.</p>
 
       <section id="State" about="[pm:State]" typeof="owl:Class">
         <h4 property="rdfs:label">State</h4>
@@ -85,7 +85,7 @@
         <dl>
           <dt>Subclass of:</dt>
           <dd><a rel="rdfs:subClassOf" href="#State">pm:State</a></dd>
-          <dd><a rel="rdfs:subClassOf" href="https://privatealpha.com/ontology/ibis/1#Issue">ibis:Issue</a></dd>
+          <dd><a rel="rdfs:subClassOf" href="https://vocab.methodandstructure.com/ibis#Issue">ibis:Issue</a></dd>
           <!--<dt>Properties:</dt>
           <dd><a rev="rdfs:domain" href="#desired-by">pm:desired-by</a></dd>-->
         </dl>
@@ -148,7 +148,7 @@
         <dl>
           <dt>Subclass of:</dt>
           <dd><a rel="rdfs:subClassOf" href="#Action">pm:Action</a></dd>
-          <dd><a rel="rdfs:subClassOf" href="https://privatealpha.com/ontology/ibis/1#Position">ibis:Position</a></dd>
+          <dd><a rel="rdfs:subClassOf" href="https://vocab.methodandstructure.com/ibis#Position">ibis:Position</a></dd>
           <dt>Properties:</dt>
           <dd><a rev="rdfs:domain" href="#achieves">pm:achieves</a></dd>
           <dd><a rev="rdfs:domain" href="#method">pm:method</a></dd>
@@ -163,7 +163,7 @@
     <section>
       <h2>Properties</h2>
       <p>The properties in this vocabulary are refined as follows. For brevity, properties that have no inheritance path have been omitted from this image:</p>
-      <object style="display: block; margin: auto; max-width: 100%; height: auto" type="image/svg+xml" data="properties.svg"><img src="properties" alt=""/></object>
+      <object style="display: block; margin: auto; max-width: 100%; height: auto" type="image/svg+xml" data="process-model-properties.svg"><img src="process-model-properties" alt=""/></object>
       <section id="achieves" about="[pm:achieves]" typeof="owl:ObjectProperty">
         <h4 property="rdfs:label">achieves</h4>
         <p property="rdfs:comment">The purpose of a task is to achieve a goal. All tasks specified in this vocabulary must also specify the goal they are intended to achieve.</p>
@@ -188,7 +188,7 @@
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" href="#Goal">pm:Goal</a></dd>
           <dt>Sub-property of:</dt>
-          <dd><a rel="rdfs:subPropertyOf" href="https://privatealpha.com/ontology/ibis/1#specializes">ibis:specializes</a></dd>
+          <dd><a rel="rdfs:subPropertyOf" href="https://vocab.methodandstructure.com/ibis#specializes">ibis:specializes</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
@@ -246,7 +246,7 @@
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" href="#Goal">pm:Goal</a></dd>
           <dt>Sub-property of:</dt>
-          <dd><a rel="rdfs:subPropertyOf" href="https://privatealpha.com/ontology/ibis/1#endorses">ibis:endorses</a></dd>
+          <dd><a rel="rdfs:subPropertyOf" href="https://vocab.methodandstructure.com/ibis#endorses">ibis:endorses</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
