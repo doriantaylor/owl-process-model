@@ -27,14 +27,14 @@ fashion that once we have framed an issue and decided to solve it, we
 must then specify a method, nominate a person responsible, and allocate
 time and material resources to carry out the solution.
 
-![](https://vocab.methodandstructure.com/example)
+![](https://vocab.methodandstructure.com/process-model-example)
 
 <div class="section">
 
 ## Goal, Task, Target
 
 In deliberate contravention to the received wisdom of management gurus
-and their business books, as well as countless project management and
+and their airport books, as well as countless project management and
 to-do applications, this vocabulary separates the concept of an abstract
 goal from the task of achieving it. It likewise separates these two
 concepts from the stipulation of a budget and/or deadline. Finally, it
@@ -48,7 +48,7 @@ capabilities:
     people, materials, equipment, and methods to achieve stated goals.
 2.  We can record unintended consequences, both negative and positive,
     of carrying out tasks.
-3.  The development of a method to carry out a given task is itself
+3.  The development of a *method* to carry out a given task is itself
     promoted to a first-order task.
 4.  We can generate a library of methods, with statistics on people,
     time and costs, to inform future allocations of tasks and targets.

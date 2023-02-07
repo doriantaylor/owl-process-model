@@ -42,16 +42,16 @@
       <section>
         <p><span property="rdfs:comment">This vocabulary encodes a model for expressing generic business processes. Its purpose is to provide a language and exchange format for software applications designed to facilitate project management.</span> This vocabulary extends <a href="https://vocab.methodandstructure.com/ibis#">the IBIS vocabulary</a> in the natural fashion that once we have framed an issue and decided to solve it, we must then specify a method, nominate a person responsible, and allocate time and material resources to carry out the solution.<!-- It likewise provides a mechanism for developing and encoding the method by which a solution is carried out.--></p>
         <figure>
-          <object type="image/svg+xml" data="process-model-example.svg"><img src="example" alt=""/></object>
+          <object type="image/svg+xml" data="process-model-example.svg"><img src="process-model-example" alt=""/></object>
         </figure>
         <section>
           <h2>Goal, Task, Target</h2>
-          <p>In deliberate contravention to the received wisdom of management gurus and their business books, as well as countless project management and to-do applications, this vocabulary separates the concept of an abstract goal from the task of achieving it. It likewise separates these two concepts from the stipulation of a budget and/or deadline. Finally, it separates a concrete task from the abstract method by which it is completed.</p>
+          <p>In deliberate contravention to the received wisdom of management gurus and their airport books, as well as countless project management and to-do applications, this vocabulary separates the concept of an abstract goal from the task of achieving it. It likewise separates these two concepts from the stipulation of a budget and/or deadline. Finally, it separates a concrete task from the abstract method by which it is completed.</p>
           <p>By separating these concepts into distinct logical objects, we gain new capabilities:</p>
           <ol>
             <li>Budgets and deadlines become subordinate to the real availability of people, materials, equipment, and methods to achieve stated goals.</li>
             <li>We can record unintended consequences, both negative and positive, of carrying out tasks.</li>
-            <li>The development of a method to carry out a given task is itself promoted to a first-order task.</li>
+            <li>The development of a <em>method</em> to carry out a given task is itself promoted to a first-order task.</li>
             <li>We can generate a library of methods, with statistics on people, time and costs, to inform future allocations of tasks and targets.</li>
           </ol>
         </section>
