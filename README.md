@@ -14,7 +14,7 @@
   - Namespace URI  
     <https://vocab.methodandstructure.com/process-model#>
   - Preferred Namespace Prefix  
-    pm
+    `pm`
 
 <div class="section">
 
@@ -92,13 +92,13 @@ timeline.
 
 <div id="State" class="section" about="[pm:State]" typeof="owl:Class">
 
-#### State
+### State
 
 A State can be understood as a snapshot of a system at a given time,
 such as before or after an event.
 
-> A State is distinct from a particular instant, but it is analogous to
-> it. At the time of observation, a State is either true or false.
+A State is distinct from a particular instant, but it is analogous to
+it. At the time of observation, a State is either true or false.
 
   - Subclass of:  
     [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept)
@@ -109,7 +109,7 @@ such as before or after an event.
 
 <div id="Goal" class="section" about="[pm:Goal]" typeof="owl:Class">
 
-#### Goal
+### Goal
 
 A Goal extends a State by way of being explicitly desired by an Agent.
 
@@ -129,7 +129,7 @@ job of a Target.
 
 <div id="Target" class="section" about="[pm:Target]" typeof="owl:Class">
 
-#### Target
+### Target
 
 A Target connects an abstract Goal to a specific Task, budget and
 deadline.
@@ -153,7 +153,7 @@ achieve it.
 
 <div id="Action" class="section" about="[pm:Action]" typeof="owl:Class">
 
-#### Action
+### Action
 
 An Action specializes an Event in that it is performed by (at least one)
 real, living Person.
@@ -175,7 +175,7 @@ real, living Person.
 
 <div id="Method" class="section" about="[pm:Method]" typeof="owl:Class">
 
-#### Method
+### Method
 
 A method specifies an abstract sequence of events.
 
@@ -194,7 +194,7 @@ prototypes of methods.
 
 <div id="Task" class="section" about="[pm:Task]" typeof="owl:Class">
 
-#### Task
+### Task
 
 A Task specializes an Action in that it has one or more Goals, and
 connects a Method of execution with a responsible Person who will carry
@@ -233,7 +233,7 @@ image:
 
 <div id="achieves" class="section" about="[pm:achieves]" typeof="owl:ObjectProperty">
 
-#### achieves
+### achieves
 
 The purpose of a task is to achieve a goal. All tasks specified in this
 vocabulary must also specify the goal they are intended to achieve.
@@ -251,7 +251,7 @@ vocabulary must also specify the goal they are intended to achieve.
 
 <div id="anchors" class="section" about="[pm:anchors]" typeof="owl:ObjectProperty">
 
-#### anchors
+### anchors
 
 By anchoring a Goal to a Target, we give it a concrete budget and
 deadline.
@@ -269,7 +269,7 @@ deadline.
 
 <div id="budget" class="section" about="[pm:budget]" typeof="owl:DatatypeProperty">
 
-#### budget
+### budget
 
 All Targets require a quantitative budget.
 
@@ -289,7 +289,7 @@ as a raw quantity, or create some kind of resource envelope object.
 
 <div id="context" class="section" about="[pm:context]" typeof="owl:ObjectProperty">
 
-#### context
+### context
 
 The context of an Action is a State.
 
@@ -309,7 +309,7 @@ together.
 
 <div id="dependency" class="section" about="[pm:dependency]" typeof="owl:ObjectProperty">
 
-#### dependency
+### dependency
 
 A State the Action depends on to be actionable.
 
@@ -326,7 +326,7 @@ A State the Action depends on to be actionable.
 
 <div id="desires" class="section" about="[pm:desires]" typeof="owl:ObjectProperty">
 
-#### desires
+### desires
 
 A foaf:Agent may desire a Goal.
 
@@ -343,7 +343,7 @@ A foaf:Agent may desire a Goal.
 
 <div id="due" class="section" about="[pm:due]" typeof="owl:DatatypeProperty">
 
-#### due
+### due
 
 All Targets must have a due date.
 
@@ -360,7 +360,7 @@ All Targets must have a due date.
 
 <div id="initiates" class="section" about="[pm:initiates]" typeof="owl:ObjectProperty owl:FunctionalProperty">
 
-#### initiates
+### initiates
 
 A valid target must initiate exactly one task to carry it out.
 
@@ -377,7 +377,7 @@ A valid target must initiate exactly one task to carry it out.
 
 <div id="method" class="section" about="[pm:method]" typeof="owl:ObjectProperty">
 
-#### method
+### method
 
 All Tasks must identify an associated Method which will be used to
 complete them.
@@ -393,7 +393,7 @@ complete them.
 
 <div id="outcome" class="section" about="[pm:outcome]" typeof="owl:ObjectProperty">
 
-#### outcome
+### outcome
 
 All Actions have an outcome, which is some kind of State.
 
@@ -410,7 +410,7 @@ All Actions have an outcome, which is some kind of State.
 
 <div id="performer" class="section" about="[pm:performer]" typeof="owl:ObjectProperty">
 
-#### performer
+### performer
 
 A performer is a real, live (at the time of performance) person who
 performs a task.
@@ -428,7 +428,7 @@ performs a task.
 
 <div id="responsible" class="section" about="[pm:responsible]" typeof="owl:ObjectProperty">
 
-#### responsible
+### responsible
 
 The person responsible for a task may not be the one performing it, but
 they are the one accountable for its completion.
@@ -446,7 +446,7 @@ they are the one accountable for its completion.
 
 <div id="recipient" class="section" about="[pm:recipient]" typeof="owl:ObjectProperty">
 
-#### recipient
+### recipient
 
 A recipient of a task is a (real, live at the time of receipt) person
 who receives and approves its product or products.
@@ -462,7 +462,7 @@ who receives and approves its product or products.
 
 <div id="status" class="section" about="[pm:status]" typeof="owl:ObjectProperty">
 
-#### status
+### status
 
 The status of a Task at any instant is a State.
 
@@ -477,7 +477,7 @@ The status of a Task at any instant is a State.
 
 <div id="subtask" class="section" about="[pm:subtask]" typeof="owl:ObjectProperty">
 
-#### subtask
+### subtask
 
 This property narrows the domain and range of ev:sub\_event to Tasks.
 
@@ -494,7 +494,7 @@ This property narrows the domain and range of ev:sub\_event to Tasks.
 
 <div id="variant" class="section" about="[pm:variant]" typeof="owl:ObjectProperty">
 
-#### variant
+### variant
 
 A variant is an alternate method of performing the same action.
 
@@ -524,7 +524,7 @@ data.
 
 <div id="ABORTED" class="section" about="[pm:ABORTED]" typeof="pm:State">
 
-#### ABORTED
+### ABORTED
 
 The task is aborted.
 
@@ -534,7 +534,7 @@ The task is aborted.
 
 <div id="COMPLETE" class="section" about="[pm:COMPLETE]" typeof="pm:State">
 
-#### COMPLETE
+### COMPLETE
 
 The task is complete.
 
@@ -544,7 +544,7 @@ The task is complete.
 
 <div id="IN-PROGRESS" class="section" about="[pm:IN-PROGRESS]" typeof="pm:State">
 
-#### IN-PROGRESS
+### IN-PROGRESS
 
 The task is in progress.
 
@@ -554,7 +554,7 @@ The task is in progress.
 
 <div id="STALLED" class="section" about="[pm:STALLED]" typeof="pm:State">
 
-#### STALLED
+### STALLED
 
 The task is stalled.
 

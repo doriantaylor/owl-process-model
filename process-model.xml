@@ -5,7 +5,9 @@
       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
       xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
       xmlns:owl="http://www.w3.org/2002/07/owl#"
-      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:sh="http://www.w3.org/ns/shacl#"
+      xmlns:xhv="http://www.w3.org/1999/xhtml/vocab#"
+      xmlns:dct="http://purl.org/dc/terms/"
       xmlns:bibo="http://purl.org/ontology/bibo/"
       xmlns:foaf="http://xmlns.com/foaf/0.1/"
       xmlns:ev="http://purl.org/NET/c4dm/event.owl#"
@@ -13,32 +15,35 @@
       xmlns:vann="http://purl.org/vocab/vann/"
       xmlns:ibis="https://vocab.methodandstructure.com/ibis#"
       xmlns:pm="https://vocab.methodandstructure.com/process-model#"
-      version="XHTML+RDFa 1.0" xml:lang="en">
+      prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# xsd: http://www.w3.org/2001/XMLSchema# owl: http://www.w3.org/2002/07/owl# sh: http://www.w3.org/ns/shacl# xhv: http://www.w3.org/1999/xhtml/vocab# dct: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# bibo: http://purl.org/ontology/bibo/ foaf: http://xmlns.com/foaf/0.1/ vann: http://purl.org/vocab/vann/ ibis: https://vocab.methodandstructure.com/ibis# pm: https://vocab.methodandstructure.com/process-model#"
+      vocab="http://www.w3.org/1999/xhtml/vocab#" xml:lang="en">
   <head>
-    <title about="#" property="dc:title">A Process Model Ontology</title>
+    <title about="#" property="dct:title">A Process Model Ontology</title>
     <base href="https://vocab.methodandstructure.com/process-model"/>
     <link about="#" rel="rdfs:isDefinedBy bibo:uri" href="#"/>
   </head>
   <body typeof="bibo:Webpage">
     <section about="#" typeof="owl:Ontology">
-      <h1 property="dc:title">A Process Model Ontology</h1>
+      <h1 property="dct:title">A Process Model Ontology</h1>
       <dl>
         <dt>Author</dt>
-        <dd><a rel="external dct:creator" href="http://doriantaylor.com/person/dorian-taylor#me"><span property="foaf:name">Dorian Taylor</span></a></dd>
+        <dd><a rel="dct:creator" href="http://doriantaylor.com/person/dorian-taylor#me"><span property="foaf:name">Dorian Taylor</span></a></dd>
         <dt>Created</dt>
-        <dd property="dct:created" datatype="xsd:dateTime" content="2009-07-22T17:56:12-0700">July 22, 2009</dd>
+        <dd property="dct:created" datatype="xsd:dateTime" content="2009-07-23T00:56:12Z">July 22, 2009</dd>
         <dt>Updated</dt>
         <dd property="dct:modified" datatype="xsd:dateTime" content="2014-02-06T22:26:21Z">February 6, 2014</dd>
         <dd property="dct:modified" datatype="xsd:dateTime" content="2017-04-06T22:24:06Z">April 6, 2017</dd>
         <dd property="dct:modified" datatype="xsd:dateTime" content="2020-03-08T18:58:53Z">March 8, 2020</dd>
         <dt>Namespace URI</dt>
-        <dd><a href="#">https://vocab.methodandstructure.com/process-model#</a></dd>
+        <dd><a about="#" rel="sh:namespace vann:preferredNamespaceUri" href="#"><code>https://vocab.methodandstructure.com/process-model#</code></a></dd>
         <dt>Preferred Namespace Prefix</dt>
-        <dd about="#" property="vann:preferredNamespacePrefix" datatype="xsd:string">pm</dd>
+        <dd><code about="#" property="sh:prefix vann:preferredNamespacePrefix" datatype="xsd:token">pm</code></dd>
       </dl>
       <section>
         <p><span property="rdfs:comment">This vocabulary encodes a model for expressing generic business processes. Its purpose is to provide a language and exchange format for software applications designed to facilitate project management.</span> This vocabulary extends <a href="https://vocab.methodandstructure.com/ibis#">the IBIS vocabulary</a> in the natural fashion that once we have framed an issue and decided to solve it, we must then specify a method, nominate a person responsible, and allocate time and material resources to carry out the solution.<!-- It likewise provides a mechanism for developing and encoding the method by which a solution is carried out.--></p>
-        <object style="display: block; margin: auto; max-width: 100%; height: auto" type="image/svg+xml" data="example.svg"><img src="example" alt=""/></object>
+        <figure>
+          <object type="image/svg+xml" data="process-model-example.svg"><img src="example" alt=""/></object>
+        </figure>
         <section>
           <h2>Goal, Task, Target</h2>
           <p>In deliberate contravention to the received wisdom of management gurus and their business books, as well as countless project management and to-do applications, this vocabulary separates the concept of an abstract goal from the task of achieving it. It likewise separates these two concepts from the stipulation of a budget and/or deadline. Finally, it separates a concrete task from the abstract method by which it is completed.</p>
@@ -53,31 +58,33 @@
         <p>This process model vocabulary connects and extends the following vocabularies:</p>
         <ul>
         <li><a rel="owl:imports" href="https://vocab.methodandstructure.com/ibis#">The IBIS (bis) Vocabulary</a></li>
-          <li><a rel="external owl:imports" href="http://purl.org/NET/c4dm/event.owl#">The Event Ontology</a></li>
-          <li><a rel="external owl:imports" href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></li>
+          <li><a rel="owl:imports" href="http://purl.org/NET/c4dm/event.owl#">The Event Ontology</a></li>
+          <li><a rel="owl:imports" href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></li>
         </ul>
       </section>
     </section>
     <section>
       <h2>Classes</h2>
       <p>The classes in this vocabulary are refined as follows:</p>
-      <object style="display: block; margin: auto; max-width: 100%; height: auto" type="image/svg+xml" data="process-model-classes.svg"><img src="process-model-classes" alt=""/></object>
-      <p>The central concepts, <a href="#Goal">pm:Goal</a> and <a href="#Task">pm:Task</a>, extend the <a href="https://vocab.methodandstructure.com/ibis#Issue">ibis:Issue</a> and <a href="https://vocab.methodandstructure.com/ibis#Position">ibis:Position</a> types, so that goals, tasks and targets can be mixed into, as well as graduated from, generic collaborative argumentation and decision-making sessions. Likewise, the <a href="#Action">pm:Action</a> class extends <a rel="external" href="http://motools.sourceforge.net/event/event.html#term_Event">ev:Event</a> so that actions and tasks can be mixed in with generic events on a timeline.</p>
+      <figure>
+        <object type="image/svg+xml" data="process-model-classes.svg"><img src="process-model-classes" alt=""/></object>
+      </figure>
+      <p>The central concepts, <a href="#Goal">pm:Goal</a> and <a href="#Task">pm:Task</a>, extend the <a href="https://vocab.methodandstructure.com/ibis#Issue">ibis:Issue</a> and <a href="https://vocab.methodandstructure.com/ibis#Position">ibis:Position</a> types, so that goals, tasks and targets can be mixed into, as well as graduated from, generic collaborative argumentation and decision-making sessions. Likewise, the <a href="#Action">pm:Action</a> class extends <a rel="dct:references" href="http://motools.sourceforge.net/event/event.html#term_Event">ev:Event</a> so that actions and tasks can be mixed in with generic events on a timeline.</p>
 
       <section id="State" about="[pm:State]" typeof="owl:Class">
-        <h4 property="rdfs:label">State</h4>
+        <h3 property="rdfs:label">State</h3>
         <p property="rdfs:comment">A State can be understood as a snapshot of a system at a given time, such as before or after an event.</p>
-        <blockquote>
+        <aside role="note">
           <p property="skos:note">A State is distinct from a particular instant, but it is analogous to it. At the time of observation, a State is either true or false.</p>
-        </blockquote>
+        </aside>
         <dl>
           <dt>Subclass of:</dt>
-          <dd><a rel="external rdfs:subClassOf" href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a></dd>
+          <dd><a rel="rdfs:subClassOf" href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="Goal" about="[pm:Goal]" typeof="owl:Class">
-        <h4 property="rdfs:label">Goal</h4>
+        <h3 property="rdfs:label">Goal</h3>
         <p property="rdfs:comment">A Goal extends a State by way of being explicitly desired by an Agent.</p>
         <aside role="note">
           <p property="skos:note">A Goal is not actionable itself, although Tasks, which are Actions, must achieve at least one Goal. At the time of observation, a Goal, like its superclass, State, is either true or false. This entails that a Goal is not expressed in terms of quantitative results or deadlines. That is the job of a Target.</p>
@@ -92,7 +99,7 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="Target" about="[pm:Target]" typeof="owl:Class">
-        <h4 property="rdfs:label">Target</h4>
+        <h3 property="rdfs:label">Target</h3>
         <p property="rdfs:comment">A Target connects an abstract Goal to a specific Task, budget and deadline.</p>
         <aside role="note">
           <p property="skos:note">The logical separation of a Target from a Goal makes it possible to speak of a Goal in abstract terms, and generate several equivalent candidate Tasks, each with one or more candidate Methods, which may achieve it.</p>
@@ -109,11 +116,11 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="Action" about="[pm:Action]" typeof="owl:Class">
-        <h4 property="rdfs:label">Action</h4>
+        <h3 property="rdfs:label">Action</h3>
         <p property="rdfs:comment">An Action specializes an Event in that it is performed by (at least one) real, living Person.</p>
         <dl>
           <dt>Subclass of:</dt>
-          <dd><a rel="external rdfs:subClassOf" href="http://purl.org/NET/c4dm/event.owl#Event">ev:Event</a></dd>
+          <dd><a rel="rdfs:subClassOf" href="http://purl.org/NET/c4dm/event.owl#Event">ev:Event</a></dd>
           <dt>Disjoint with:</dt>
           <dd><a rel="owl:disjointWith" href="#State">pm:State</a></dd>
           <dt>Properties:</dt>
@@ -126,7 +133,7 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="Method" about="[pm:Method]" typeof="owl:Class">
-        <h4 property="rdfs:label">Method</h4>
+        <h3 property="rdfs:label">Method</h3>
         <p property="rdfs:comment">A method specifies an abstract sequence of events.</p>
         <aside role="note">
           <p property="skos:editorialNote">This class is provisional. It isn't entirely clear that we need a distinct Method class, since Tasks and the like could be appropriated as prototypes of methods.</p>
@@ -140,7 +147,7 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="Task" about="[pm:Task]" typeof="owl:Class">
-        <h4 property="rdfs:label">Task</h4>
+        <h3 property="rdfs:label">Task</h3>
         <p property="rdfs:comment">A Task specializes an Action in that it has one or more Goals, and connects a Method of execution with a responsible Person who will carry it out.</p>
         <aside role="note">
           <p property="skos:usageNote">Since pm:Task is a descendant of ev:Event, we can use the ev:time relation to specify a time:Interval to record the time taken to complete a task.</p>
@@ -163,9 +170,11 @@
     <section>
       <h2>Properties</h2>
       <p>The properties in this vocabulary are refined as follows. For brevity, properties that have no inheritance path have been omitted from this image:</p>
-      <object style="display: block; margin: auto; max-width: 100%; height: auto" type="image/svg+xml" data="process-model-properties.svg"><img src="process-model-properties" alt=""/></object>
+      <figure>
+        <object type="image/svg+xml" data="process-model-properties.svg"><img src="process-model-properties" alt=""/></object>
+      </figure>
       <section id="achieves" about="[pm:achieves]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">achieves</h4>
+        <h3 property="rdfs:label">achieves</h3>
         <p property="rdfs:comment">The purpose of a task is to achieve a goal. All tasks specified in this vocabulary must also specify the goal they are intended to achieve.</p>
         <dl>
           <dt>Domain:</dt>
@@ -180,7 +189,7 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="anchors" about="[pm:anchors]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">anchors</h4>
+        <h3 property="rdfs:label">anchors</h3>
         <p property="rdfs:comment">By anchoring a Goal to a Target, we give it a concrete budget and deadline.</p>
         <dl>
           <dt>Domain:</dt>
@@ -193,7 +202,7 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="budget" about="[pm:budget]" typeof="owl:DatatypeProperty">
-        <h4 property="rdfs:label">budget</h4>
+        <h3 property="rdfs:label">budget</h3>
         <p property="rdfs:comment">All Targets require a quantitative budget.</p>
         <aside role="note">
           <p property="skos:editorialNote">It is not clear, prior to implementation, if we should keep the budget as a raw quantity, or create some kind of resource envelope object.</p>
@@ -202,14 +211,14 @@
           <dt>Domain:</dt>
           <dd><a rel="rdfs:domain" href="#Task">pm:Target</a></dd>
           <dt>Range:</dt>
-          <dd><a rel="external rdfs:range" resource="http://www.w3.org/2001/XMLSchema#decimal" href="http://www.w3.org/TR/xmlschema-2/#decimal">xsd:decimal</a></dd>
+          <dd><a rel="rdfs:range" resource="http://www.w3.org/2001/XMLSchema#decimal" href="http://www.w3.org/TR/xmlschema-2/#decimal">xsd:decimal</a></dd>
           <dt>Cardinality:</dt>
           <dd property="owl:cardinality" datatype="xsd:integer">1</dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="context" about="[pm:context]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">context</h4>
+        <h3 property="rdfs:label">context</h3>
         <p property="rdfs:comment">The context of an Action is a State.</p>
         <aside role="note">
           <p property="skos:usageNote">The pm:context and pm:outcome properties can be used to chain pm:Actions together.</p>
@@ -220,12 +229,12 @@
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" href="#State">pm:State</a></dd>
           <dt>Sub-property of:</dt>
-          <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#factor">ev:factor</a></dd>
+          <dd><a rel="rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#factor">ev:factor</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="dependency" about="[pm:dependency]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">dependency</h4>
+        <h3 property="rdfs:label">dependency</h3>
         <p property="rdfs:comment">A State the Action depends on to be actionable.</p>
         <dl>
           <dt>Domain:</dt>
@@ -238,11 +247,11 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="desires" about="[pm:desires]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">desires</h4>
+        <h3 property="rdfs:label">desires</h3>
         <p property="rdfs:comment">A foaf:Agent may desire a Goal.</p>
         <dl>
           <dt>Domain:</dt>
-          <dd><a rel="external rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a></dd>
+          <dd><a rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a></dd>
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" href="#Goal">pm:Goal</a></dd>
           <dt>Sub-property of:</dt>
@@ -251,20 +260,20 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="due" about="[pm:due]" typeof="owl:DatatypeProperty">
-        <h4 property="rdfs:label">due</h4>
+        <h3 property="rdfs:label">due</h3>
         <p property="rdfs:comment">All Targets must have a due date.</p>
         <dl>
           <dt>Domain:</dt>
           <dd><a rel="rdfs:domain" href="#Task">pm:Target</a></dd>
           <dt>Range:</dt>
-          <dd><a rel="external rdfs:range" resource="http://www.w3.org/2001/XMLSchema#dateTime" href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a></dd>
+          <dd><a rel="rdfs:range" resource="http://www.w3.org/2001/XMLSchema#dateTime" href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a></dd>
           <dt>Cardinality:</dt>
           <dd property="owl:cardinality" datatype="xsd:integer">1</dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="initiates" about="[pm:initiates]" typeof="owl:ObjectProperty owl:FunctionalProperty">
-        <h4 property="rdfs:label">initiates</h4>
+        <h3 property="rdfs:label">initiates</h3>
         <p property="rdfs:comment">A valid target must initiate exactly one task to carry it out.</p>
         <dl>
           <dt>Domain:</dt>
@@ -277,7 +286,7 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="method" about="[pm:method]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">method</h4>
+        <h3 property="rdfs:label">method</h3>
         <p property="rdfs:comment">All Tasks must identify an associated Method which will be used to complete them.</p>
         <dl>
           <dt>Domain:</dt>
@@ -288,7 +297,7 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="outcome" about="[pm:outcome]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">outcome</h4>
+        <h3 property="rdfs:label">outcome</h3>
         <p property="rdfs:comment">All Actions have an outcome, which is some kind of State.</p>
         <dl>
           <dt>Domain:</dt>
@@ -298,49 +307,49 @@
           <!--<dt>Cardinality:</dt>
           <dd property="owl:cardinality" datatype="xsd:integer">1</dd>-->
           <dt>Sub-property of:</dt>
-          <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#product">ev:product</a></dd>
+          <dd><a rel="rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#product">ev:product</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="performer" about="[pm:performer]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">performer</h4>
+        <h3 property="rdfs:label">performer</h3>
         <p property="rdfs:comment">A performer is a real, live (at the time of performance) person who performs a task.</p>
         <dl>
           <dt>Sub-property of:</dt>
-          <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#agent">ev:agent</a></dd>
+          <dd><a rel="rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#agent">ev:agent</a></dd>
           <dt>Domain:</dt>
           <dd><a rel="rdfs:domain" href="#Action">pm:Action</a></dd>
           <dt>Range:</dt>
-          <dd><a rel="external rdfs:range" href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></dd>
+          <dd><a rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="responsible" about="[pm:responsible]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">responsible</h4>
+        <h3 property="rdfs:label">responsible</h3>
         <p property="rdfs:comment">The person responsible for a task may not be the one performing it, but they are the one accountable for its completion.</p>
         <dl>
           <dt>Sub-property of:</dt>
-          <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#agent">ev:agent</a></dd>
+          <dd><a rel="rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#agent">ev:agent</a></dd>
           <dt>Domain:</dt>
           <dd><a rel="rdfs:domain" href="#Task">pm:Task</a></dd>
           <dt>Range:</dt>
-          <dd><a rel="external rdfs:range" href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></dd>
+          <dd><a rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="recipient" about="[pm:recipient]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">recipient</h4>
+        <h3 property="rdfs:label">recipient</h3>
         <p property="rdfs:comment">A recipient of a task is a (real, live at the time of receipt) person who receives and approves its product or products.</p>
         <dl>
           <dt>Domain:</dt>
           <dd><a rel="rdfs:domain" href="#Task">pm:Task</a></dd>
           <dt>Range:</dt>
-          <dd><a rel="external rdfs:range" href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></dd>
+          <dd><a rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="status" about="[pm:status]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">status</h4>
+        <h3 property="rdfs:label">status</h3>
         <p property="rdfs:comment">The status of a Task at any instant is a State.</p>
         <dl>
           <dt>Domain:</dt>
@@ -351,7 +360,7 @@
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="subtask" about="[pm:subtask]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">subtask</h4>
+        <h3 property="rdfs:label">subtask</h3>
         <p property="rdfs:comment">This property narrows the domain and range of ev:sub_event to Tasks.</p>
         <dl>
           <dt>Domain:</dt>
@@ -359,12 +368,12 @@
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" href="#Task">pm:Task</a></dd>
           <dt>Sub-property of:</dt>
-          <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#sub_event">ev:sub_event</a></dd>
+          <dd><a rel="rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#sub_event">ev:sub_event</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="variant" about="[pm:variant]" typeof="owl:ObjectProperty">
-        <h4 property="rdfs:label">variant</h4>
+        <h3 property="rdfs:label">variant</h3>
         <p property="rdfs:comment">A variant is an alternate method of performing the same action.</p>
         <dl>
           <dt>Domain:</dt>
@@ -372,7 +381,7 @@
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" href="#Action">pm:Action</a></dd>
           <dt>Sub-property of:</dt>
-          <dd><a rel="external rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#sub_event">ev:sub_event</a></dd>
+          <dd><a rel="rdfs:subPropertyOf" href="http://purl.org/NET/c4dm/event.owl#sub_event">ev:sub_event</a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
@@ -381,22 +390,22 @@
       <h2>Individuals</h2>
       <p>Currently, the only individuals defined by this vocabulary are those common, reusable States which can be used as values for <a href="#status">pm:status</a>. Most other statuses, such as whether a Task has a responsible person assigned or a valid Method, should be able to be derived from other data.</p>
       <section id="ABORTED" about="[pm:ABORTED]" typeof="pm:State">
-        <h4 property="rdfs:label">ABORTED</h4>
+        <h3 property="rdfs:label">ABORTED</h3>
         <p property="rdfs:comment">The task is aborted.</p>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="COMPLETE" about="[pm:COMPLETE]" typeof="pm:State">
-        <h4 property="rdfs:label">COMPLETE</h4>
+        <h3 property="rdfs:label">COMPLETE</h3>
         <p property="rdfs:comment">The task is complete.</p>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="IN-PROGRESS" about="[pm:IN-PROGRESS]" typeof="pm:State">
-        <h4 property="rdfs:label">IN-PROGRESS</h4>
+        <h3 property="rdfs:label">IN-PROGRESS</h3>
         <p property="rdfs:comment">The task is in progress.</p>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
       <section id="STALLED" about="[pm:STALLED]" typeof="pm:State">
-        <h4 property="rdfs:label">STALLED</h4>
+        <h3 property="rdfs:label">STALLED</h3>
         <p property="rdfs:comment">The task is stalled.</p>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
