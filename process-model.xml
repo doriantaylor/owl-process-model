@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="/transform"?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -21,8 +22,9 @@
     <title about="#" property="dct:title">A Process Model Ontology</title>
     <base href="https://vocab.methodandstructure.com/process-model"/>
     <link about="#" rel="rdfs:isDefinedBy bibo:uri" href="#"/>
+    <link rel="up top contents index" href="/"/>
   </head>
-  <body typeof="bibo:Webpage">
+  <body typeof="bibo:Specification">
     <section about="#" typeof="owl:Ontology">
       <h1 property="dct:title">A Process Model Ontology</h1>
       <dl>
