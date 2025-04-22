@@ -1,10 +1,11 @@
-<div class="section" about="#" typeof="owl:Ontology">
-
-# A Process Model Ontology
+<div about="#" typeof="owl:Ontology">
 
 Author  
 <a href="http://doriantaylor.com/person/dorian-taylor#me"
 rel="dct:creator"><span property="foaf:name">Dorian Taylor</span></a>
+
+Version  
+0.2
 
 Created  
 July 22, 2009
@@ -16,14 +17,14 @@ April 6, 2017
 
 March 8, 2020
 
+April 9, 2025
+
 Namespace URI  
 <a href="https://vocab.methodandstructure.com/process-model#" about="#"
 rel="sh:namespace vann:preferredNamespaceUri"><code>https://vocab.methodandstructure.com/process-model#</code></a>
 
 Preferred Namespace Prefix  
 `pm`
-
-<div class="section">
 
 <span property="rdfs:comment">This vocabulary encodes a model for
 expressing generic business processes. Its purpose is to provide a
@@ -34,19 +35,23 @@ fashion that once we have framed an issue and decided to solve it, we
 must then specify a method, nominate a person responsible, and allocate
 time and material resources to carry out the solution.
 
-![](https://vocab.methodandstructure.com/process-model-example)
+</div>
 
-<div class="section">
+<div id="ch-description" class="section" about="#ch-description">
 
 ## Goal, Task, Target
 
+<figure>
+<img src="https://vocab.methodandstructure.com/process-model-classes" />
+</figure>
+
 In deliberate contravention to the received wisdom of management gurus
 and their airport books, as well as countless project management and
-to-do applications, this vocabulary separates the concept of an abstract
-goal from the task of achieving it. It likewise separates these two
-concepts from the stipulation of a budget and/or deadline. Finally, it
-separates a concrete task from the abstract method by which it is
-completed.
+to-do applications, this vocabulary separates the concept of a
+*qualitative* goal from the task of achieving it. It likewise separates
+these two concerns from the allocation of *quantitative* resources, such
+as time and money. Finally, it separates a concrete task from the
+abstract method by which it is completed.
 
 By separating these concepts into distinct logical objects, we gain new
 capabilities:
@@ -62,79 +67,59 @@ capabilities:
 
 </div>
 
-This process model vocabulary connects and extends the following
-vocabularies:
-
--   <a href="https://vocab.methodandstructure.com/ibis#"
-    rel="owl:imports">The IBIS (bis) Vocabulary</a>
--   <a href="http://purl.org/NET/c4dm/event.owl#" rel="owl:imports">The
-    Event Ontology</a>
--   <a href="http://www.w3.org/2004/02/skos/core#" rel="owl:imports">Simple
-    Knowledge Organization System</a>
-
-</div>
-
-</div>
-
-<div class="section">
+<div id="ch-classes" class="section" about="#ch-classes">
 
 ## Classes
 
 The classes in this vocabulary are refined as follows:
 
-![](https://vocab.methodandstructure.com/process-model-classes)
+<figure>
+<img src="https://vocab.methodandstructure.com/process-model-example" />
+</figure>
 
 The central concepts,
-[pm:Goal](https://vocab.methodandstructure.com/process-model#Goal) and
-[pm:Task](https://vocab.methodandstructure.com/process-model#Task),
-extend the [ibis:Issue](https://vocab.methodandstructure.com/ibis#Issue)
-and [ibis:Position](https://vocab.methodandstructure.com/ibis#Position)
+[`pm:Goal`](https://vocab.methodandstructure.com/process-model#Goal)
+(which further refines to
+[`pm:Target`](https://vocab.methodandstructure.com/process-model#Target))
+and
+[`pm:Task`](https://vocab.methodandstructure.com/process-model#Task),
+extend the
+[`ibis:Issue`](https://vocab.methodandstructure.com/ibis#Issue) and
+[`ibis:Position`](https://vocab.methodandstructure.com/ibis#Position)
 types, so that goals, tasks and targets can be mixed into, as well as
 graduated from, generic collaborative argumentation and decision-making
 sessions. Likewise, the
-[pm:Action](https://vocab.methodandstructure.com/process-model#Action)
-class extends
+[`pm:Action`](https://vocab.methodandstructure.com/process-model#Action)
+class extends <a href="https://www.w3.org/TR/prov-o/#Activity"
+rel="dct:references"><code>prov:Activity</code></a> and
 <a href="http://motools.sourceforge.net/event/event.html#term_Event"
-rel="dct:references">ev:Event</a> so that actions and tasks can be mixed
-in with generic events on a timeline.
-
-<div id="State" class="section" about="[pm:State]" typeof="owl:Class">
-
-### State
-
-A State can be understood as a snapshot of a system at a given time,
-such as before or after an event.
-
-A State is distinct from a particular instant, but it is analogous to
-it. At the time of observation, a State is either true or false.
-
-Subclass of:  
-<a href="http://www.w3.org/2004/02/skos/core#Concept"
-rel="rdfs:subClassOf">skos:Concept</a>
-
-<a href="https://vocab.methodandstructure.com/process-model#"
-rel="rdfs:isDefinedBy">Back to Top</a>
-
-</div>
+rel="dct:references"><code>ev:Event</code></a> so that actions and tasks
+can be mixed in with generic events on a timeline.
 
 <div id="Goal" class="section" about="[pm:Goal]" typeof="owl:Class">
 
-### Goal
+### `Goal`
 
-A Goal extends a State by way of being explicitly desired by an Agent.
+A `pm:Goal` extends an `ibis:Issue` by way of being explicitly desired
+by a `foaf:Agent`.
 
-A Goal is not actionable itself, although Tasks, which are Actions, must
-achieve at least one Goal. At the time of observation, a Goal, like its
-superclass, State, is either true or false. This entails that a Goal is
-not expressed in terms of quantitative results or deadlines. That is the
-job of a Target.
+A `pm:Goal` is not actionable itself, although a `pm:Task`, which is a
+`pm:Action`, must achieve at least one `pm:Goal`. At the time of
+observation, `pm:Goal`, like its superclass, `ibis:Issue`, is *binary*:
+either resolved or unresolved. This entails that a `pm:Goal` is not
+expressed in terms of quantitative results or deadlines. That is the job
+of a `pm:Target`.
 
 Subclass of:  
-<a href="https://vocab.methodandstructure.com/process-model#State"
-rel="rdfs:subClassOf">pm:State</a>
-
 <a href="https://vocab.methodandstructure.com/ibis#Issue"
-rel="rdfs:subClassOf">ibis:Issue</a>
+rel="rdfs:subClassOf"><code>ibis:Issue</code></a>
+
+Properties:  
+<a href="https://vocab.methodandstructure.com/process-model#achieved-by"
+rev="rdfs:domain"><code>pm:achieved-by</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#wanted-by"
+rev="rdfs:domain"><code>pm:wanted-by</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -143,32 +128,32 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 
 <div id="Target" class="section" about="[pm:Target]" typeof="owl:Class">
 
-### Target
+### `Target`
 
-A Target connects an abstract Goal to a specific Task, budget and
-deadline.
+A `pm:Target` connects a *qualitative* `pm:Goal` to a specific
+`pm:Task`, and a concrete, *quantitative* allocation of resources.
 
-The logical separation of a Target from a Goal makes it possible to
-speak of a Goal in abstract terms, and generate several equivalent
-candidate Tasks, each with one or more candidate Methods, which may
-achieve it.
+The logical separation of a `pm:Target` from a `pm:Goal` makes it
+possible to speak of a `pm:Goal` in abstract terms, and generate several
+equivalent candidate `pm:Tasks`, each with one or more candidate
+`pm:Methods`, which may achieve it.
 
 Subclass of:  
 <a href="https://vocab.methodandstructure.com/process-model#Goal"
-rel="rdfs:subClassOf">pm:Goal</a>
+rel="rdfs:subClassOf"><code>pm:Goal</code></a>
 
 Properties:  
 <a href="https://vocab.methodandstructure.com/process-model#anchors"
-rev="rdfs:domain">pm:anchors</a>
-
-<a href="https://vocab.methodandstructure.com/process-model#initiates"
-rev="rdfs:domain">pm:initiates</a>
+rev="rdfs:domain"><code>pm:anchors</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#budget"
-rev="rdfs:domain">pm:budget</a>
+rev="rdfs:domain"><code>pm:budget</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#due"
-rev="rdfs:domain">pm:due</a>
+rev="rdfs:domain"><code>pm:due</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#initiates"
+rev="rdfs:domain"><code>pm:initiates</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -177,34 +162,37 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 
 <div id="Action" class="section" about="[pm:Action]" typeof="owl:Class">
 
-### Action
+### `Action`
 
-An Action specializes an Event in that it is performed by (at least one)
-real, living Person.
+A `pm:Action` specializes an `ev:Event` in that it is performed by (at
+least one) real, living `foaf:Person`.
 
 Subclass of:  
-<a href="http://purl.org/NET/c4dm/event.owl#Event"
-rel="rdfs:subClassOf">ev:Event</a>
+<a href="https://www.w3.org/TR/prov-o/#Activity" rel="rdfs:subClassOf"
+resource="prov:Activity"><code>prov:Activity</code></a>
+
+<a href="https://motools.sourceforge.net/event/event.html#term_Event"
+rel="rdfs:subClassOf" resource="ev:Event"><code>ev:Event</code></a>
 
 Disjoint with:  
-<a href="https://vocab.methodandstructure.com/process-model#State"
-rel="owl:disjointWith">pm:State</a>
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="owl:disjointWith"><code>ibis:State</code></a>
 
 Properties:  
 <a href="https://vocab.methodandstructure.com/process-model#context"
-rev="rdfs:domain">pm:context</a>
+rev="rdfs:domain"><code>pm:context</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#dependency"
-rev="rdfs:domain">pm:dependency</a>
+rev="rdfs:domain"><code>pm:dependency</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#performer"
-rev="rdfs:domain">pm:performer</a>
+rev="rdfs:domain"><code>pm:performer</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#outcome"
-rev="rdfs:domain">pm:outcome</a>
+rev="rdfs:domain"><code>pm:outcome</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#variant"
-rev="rdfs:domain">pm:variant</a>
+rev="rdfs:domain"><code>pm:variant</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -213,21 +201,25 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 
 <div id="Method" class="section" about="[pm:Method]" typeof="owl:Class">
 
-### Method
+### `Method`
 
 A method specifies an abstract sequence of events.
 
 This class is provisional. It isn't entirely clear that we need a
-distinct Method class, since Tasks and the like could be appropriated as
-prototypes of methods.
+distinct `pm:Method` class, since `pm:Tasks` and the like could be
+appropriated as prototypes of methods.
 
 Subclass of:  
 <a href="https://vocab.methodandstructure.com/process-model#Action"
-rel="rdfs:subClassOf">pm:Action</a>
+rel="rdfs:subClassOf"><code>pm:Action</code></a>
 
 Disjoint with:  
-<a href="https://vocab.methodandstructure.com/process-model#State"
-rel="owl:disjointWith">pm:State</a>
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="owl:disjointWith"><code>ibis:State</code></a>
+
+Properties:  
+<a href="https://vocab.methodandstructure.com/process-model#instance"
+rev="rdfs:domain"><code>pm:instance</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -236,41 +228,41 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 
 <div id="Task" class="section" about="[pm:Task]" typeof="owl:Class">
 
-### Task
+### `Task`
 
-A Task specializes an Action in that it has one or more Goals, and
-connects a Method of execution with a responsible Person who will carry
-it out.
+A `pm:Task` specializes a `pm:Action` in that it has one or more
+`pm:Goal`, and connects a `pm:Method` of execution with a responsible
+`foaf:Person` who will carry it out.
 
-Since pm:Task is a descendant of ev:Event, we can use the ev:time
+Since `pm:Task` is a descendant of `ev:Event`, we can use the ev:time
 relation to specify a time:Interval to record the time taken to complete
 a task.
 
 Subclass of:  
 <a href="https://vocab.methodandstructure.com/process-model#Action"
-rel="rdfs:subClassOf">pm:Action</a>
+rel="rdfs:subClassOf"><code>pm:Action</code></a>
 
 <a href="https://vocab.methodandstructure.com/ibis#Position"
-rel="rdfs:subClassOf">ibis:Position</a>
+rel="rdfs:subClassOf"><code>ibis:Position</code></a>
 
 Properties:  
 <a href="https://vocab.methodandstructure.com/process-model#achieves"
-rev="rdfs:domain">pm:achieves</a>
+rev="rdfs:domain"><code>pm:achieves</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#method"
-rev="rdfs:domain">pm:method</a>
+rev="rdfs:domain"><code>pm:method</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#responsible"
-rev="rdfs:domain">pm:responsible</a>
+rev="rdfs:domain"><code>pm:responsible</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#recipient"
-rev="rdfs:domain">pm:recipient</a>
+rev="rdfs:domain"><code>pm:recipient</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#status"
-rev="rdfs:domain">pm:status</a>
+rev="rdfs:domain"><code>pm:status</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#subtask"
-rev="rdfs:domain">pm:subtask</a>
+rev="rdfs:domain"><code>pm:subtask</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -279,60 +271,195 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
 
-<div class="section">
+<div id="ch-properties" class="section" about="#ch-properties">
 
 ## Properties
 
-The properties in this vocabulary are refined as follows. For brevity,
-properties that have no inheritance path have been omitted from this
-image:
+The properties in this vocabulary are refined as follows:
 
-![](https://vocab.methodandstructure.com/process-model-properties)
+<figure>
+<img
+src="https://vocab.methodandstructure.com/process-model-properties" />
+</figure>
 
-<div id="achieves" class="section" about="[pm:achieves]"
+<div id="sec-domain-state" class="section">
+
+### State-Related
+
+<div id="contextualizes" class="section" about="[pm:contextualizes]"
 typeof="owl:ObjectProperty">
 
-### achieves
+#### `contextualizes`
 
-The purpose of a task is to achieve a goal. All tasks specified in this
-vocabulary must also specify the goal they are intended to achieve.
+An `ibis:State` lends context to a `pm:Action`.
 
 Domain:  
-<a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:domain">pm:Task</a>
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="rdfs:domain"><code>ibis:State</code></a>
 
 Range:  
-<a href="https://vocab.methodandstructure.com/process-model#Goal"
-rel="rdfs:range">pm:Goal</a>
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:range"><code>pm:Action</code></a>
 
-Sub-property of:  
-<a href="https://vocab.methodandstructure.com/process-model#outcome"
-rel="rdfs:subPropertyOf">pm:outcome</a>
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#context"
+rel="owl:inverseOf"><code>pm:context</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
+
+<div id="process" class="section" about="[pm:process]"
+typeof="owl:ObjectProperty">
+
+#### `process`
+
+When an `ibis:State` is the outcome of a `pm:Action`.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="rdfs:domain"><code>ibis:State</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:range"><code>pm:Action</code></a>
+
+Sub-property of:  
+<a href="https://www.w3.org/TR/prov-o/#wasGeneratedBy"
+rel="rdfs:subPropertyOf"
+resource="prov:wasGeneratedBy"><code>prov:wasGeneratedBy</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#outcome"
+rel="owl:inverseOf"><code>pm:outcome</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+</div>
+
+<div id="sec-domain-goal" class="section">
+
+### Goal-Related
+
+<div id="achieved-by" class="section" about="[pm:achieved-by]"
+typeof="owl:ObjectProperty">
+
+#### `achieved-by`
+
+A `pm:Goal` is achieved by at least one candidate `pm:Task`.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Goal"
+rel="rdfs:domain"><code>pm:Goal</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Task"
+rel="rdfs:range"><code>pm:Task</code></a>
+
+Sub-property of:  
+<a href="https://www.w3.org/TR/skos-reference/#semantic-relations"
+rel="rdfs:subPropertyOf"
+resource="skos:semanticRelation"><code>skos:semanticRelation</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#achieves"
+rel="owl:inverseOf"><code>pm:achieves</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="anchored-by" class="section" about="[pm:anchored-by]"
+typeof="owl:ObjectProperty">
+
+#### `anchored-by`
+
+A `pm:Goal` is anchored to reality by a `pm:Target`.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Goal"
+rel="rdfs:domain"><code>pm:Goal</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Task"
+rel="rdfs:range"><code>pm:Target</code></a>
+
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/ibis#generalizes"
+rel="rdfs:subPropertyOf"><code>ibis:generalizes</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#anchors"
+rel="owl:inverseOf"><code>pm:anchors</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="wanted-by" class="section" about="[pm:wanted-by]"
+typeof="owl:ObjectProperty">
+
+#### `wanted-by`
+
+The identifying feature of a `pm:Goal` is that somebody wants it to
+happen.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Goal"
+rel="rdfs:domain"><code>pm:Goal</code></a>
+
+Range:  
+<a href="http://xmlns.com/foaf/spec/#term_Agent" rel="rdfs:range"
+resource="foaf:Agent"><code>foaf:Agent</code></a>
+
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/ibis#endorsed-by"
+rel="rdfs:subPropertyOf"><code>ibis:endorsed-by</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#wants"
+rel="owl:inverseOf"><code>pm:wants</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+</div>
+
+<div id="sec-domain-target" class="section">
+
+### Target-Related
 
 <div id="anchors" class="section" about="[pm:anchors]"
 typeof="owl:ObjectProperty">
 
-### anchors
+#### `anchors`
 
-By anchoring a Goal to a Target, we give it a concrete budget and
-deadline.
+By anchoring a `pm:Goal` to a `pm:Target`, we give it a concrete budget
+and deadline.
 
 Domain:  
 <a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:domain">pm:Target</a>
+rel="rdfs:domain"><code>pm:Target</code></a>
 
 Range:  
 <a href="https://vocab.methodandstructure.com/process-model#Goal"
-rel="rdfs:range">pm:Goal</a>
+rel="rdfs:range"><code>pm:Goal</code></a>
 
 Sub-property of:  
 <a href="https://vocab.methodandstructure.com/ibis#specializes"
-rel="rdfs:subPropertyOf">ibis:specializes</a>
+rel="rdfs:subPropertyOf"><code>ibis:specializes</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#anchored-by"
+rel="owl:inverseOf"><code>pm:anchored-by</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -342,98 +469,32 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 <div id="budget" class="section" about="[pm:budget]"
 typeof="owl:DatatypeProperty">
 
-### budget
+#### `budget`
 
-All Targets require a quantitative budget.
+Every `pm:Target` has to have a quantitative budget of resources
+assigned to it. It need not be denominated in currency (e.g. it could be
+person-hours).
+
+I am contemplating changing this to `pm:valuation` to refer to the
+value-based process model.
 
 It is not clear, prior to implementation, if we should keep the budget
 as a raw quantity, or create some kind of resource envelope object.
 
 Domain:  
-<a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:domain">pm:Target</a>
+<a href="https://vocab.methodandstructure.com/process-model#Target"
+rel="rdfs:domain"><code>pm:Target</code></a>
 
 Range:  
 <a href="http://www.w3.org/TR/xmlschema-2/#decimal" rel="rdfs:range"
-resource="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a>
+resource="xsd:decimal"><code>xsd:decimal</code></a>
 
 Cardinality:  
-1
+`1`
 
-<a href="https://vocab.methodandstructure.com/process-model#"
-rel="rdfs:isDefinedBy">Back to Top</a>
-
-</div>
-
-<div id="context" class="section" about="[pm:context]"
-typeof="owl:ObjectProperty">
-
-### context
-
-The context of an Action is a State.
-
-The pm:context and pm:outcome properties can be used to chain pm:Actions
-together.
-
-Domain:  
-<a href="https://vocab.methodandstructure.com/process-model#Action"
-rel="rdfs:domain">pm:Action</a>
-
-Range:  
-<a href="https://vocab.methodandstructure.com/process-model#State"
-rel="rdfs:range">pm:State</a>
-
-Sub-property of:  
-<a href="http://purl.org/NET/c4dm/event.owl#factor"
-rel="rdfs:subPropertyOf">ev:factor</a>
-
-<a href="https://vocab.methodandstructure.com/process-model#"
-rel="rdfs:isDefinedBy">Back to Top</a>
-
-</div>
-
-<div id="dependency" class="section" about="[pm:dependency]"
-typeof="owl:ObjectProperty">
-
-### dependency
-
-A State the Action depends on to be actionable.
-
-Domain:  
-<a href="https://vocab.methodandstructure.com/process-model#Action"
-rel="rdfs:domain">pm:Action</a>
-
-Range:  
-<a href="https://vocab.methodandstructure.com/process-model#State"
-rel="rdfs:range">pm:State</a>
-
-Sub-property of:  
-<a href="https://vocab.methodandstructure.com/ontology/ibis/1#suggests"
-rel="rdfs:subPropertyOf">ibis:suggests</a>
-
-<a href="https://vocab.methodandstructure.com/process-model#"
-rel="rdfs:isDefinedBy">Back to Top</a>
-
-</div>
-
-<div id="desires" class="section" about="[pm:desires]"
-typeof="owl:ObjectProperty">
-
-### desires
-
-A foaf:Agent may desire a Goal.
-
-Domain:  
-<a href="http://xmlns.com/foaf/0.1/Agent"
-rel="rdfs:domain">foaf:Agent</a>
-
-Range:  
-<a href="https://vocab.methodandstructure.com/process-model#Goal"
-rel="rdfs:range">pm:Goal</a>
-
-Sub-property of:  
-<a href="https://vocab.methodandstructure.com/ibis#endorses"
-rel="rdfs:subPropertyOf">ibis:endorses</a>
+See also:  
+<a href="https://www.youtube.com/watch?v=fiSjxr8xG6A"
+rel="rdfs:seeAlso">Timing test for methodology talk</a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -443,20 +504,28 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 <div id="due" class="section" about="[pm:due]"
 typeof="owl:DatatypeProperty">
 
-### due
+#### `due`
 
-All Targets must have a due date.
+Every `pm:Target` must have a due date, or expiry date after which the
+target is no longer viable.
+
+I am contemplating changing this to `pm:expires` to refer to the
+value-based process model.
 
 Domain:  
-<a href="https://vocab.methodandstructure.com/process-model#Task"
+<a href="https://vocab.methodandstructure.com/process-model#Target"
 rel="rdfs:domain">pm:Target</a>
 
 Range:  
 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime" rel="rdfs:range"
-resource="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+resource="xsd:dateTime"><code>xsd:dateTime</code></a>
 
 Cardinality:  
-1
+`1`
+
+See also:  
+<a href="https://www.youtube.com/watch?v=fiSjxr8xG6A"
+rel="rdfs:seeAlso">Timing test for methodology talk</a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -466,20 +535,123 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 <div id="initiates" class="section" about="[pm:initiates]"
 typeof="owl:ObjectProperty owl:FunctionalProperty">
 
-### initiates
+#### `initiates`
 
-A valid target must initiate exactly one task to carry it out.
+A valid `pm:Target` must initiate exactly one `pm:Task` to carry it out.
 
 Domain:  
 <a href="https://vocab.methodandstructure.com/process-model#Target"
-rel="rdfs:domain">pm:Target</a>
+rel="rdfs:domain"><code>pm:Target</code></a>
 
 Range:  
 <a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:range">pm:Task</a>
+rel="rdfs:range"><code>pm:Task</code></a>
+
+Inverse of:  
+<a
+href="https://vocab.methodandstructure.com/process-model#initiated-by"
+rel="owl:inverseOf"><code>pm:initiated-by</code></a>
 
 Cardinality:  
-1
+`1`
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+</div>
+
+<div id="sec-domain-action" class="section">
+
+### Action-Related
+
+<div id="context" class="section" about="[pm:context]"
+typeof="owl:ObjectProperty">
+
+#### `context`
+
+A `pm:Action` may have an `ibis:State` as a context.
+
+The `pm:context` and `pm:outcome` properties can be used to chain one
+`pm:Action` to another.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:domain"><code>pm:Action</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="rdfs:range"><code>ibis:State</code></a>
+
+Sub-property of:  
+<a href="https://www.w3.org/TR/skos-reference/#semantic-relations"
+rel="rdfs:subPropertyOf"
+resource="skos:semanticRelation"><code>skos:semanticRelation</code></a>
+
+<a href="https://www.w3.org/TR/prov-o/#used" rel="rdfs:subPropertyOf"
+resource="prov:used"><code>prov:used</code></a>
+
+<a href="https://motools.sourceforge.net/event/event.html#term_factor"
+rel="rdfs:subPropertyOf" resource="ev:factor"><code>ev:factor</code></a>
+
+Inverse of:  
+<a
+href="https://vocab.methodandstructure.com/process-model#contextualizes"
+rel="owl:inverseOf"><code>pm:contextualizes</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="dependency" class="section" about="[pm:dependency]"
+typeof="owl:ObjectProperty">
+
+#### `dependency`
+
+An `ibis:State` the `pm:Action` depends on to be actionable.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:domain"><code>pm:Action</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="rdfs:range"><code>ibis:State</code></a>
+
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/ibis#suggests"
+rel="rdfs:subPropertyOf"><code>ibis:suggests</code></a>
+
+Inverse of:  
+<a
+href="https://vocab.methodandstructure.com/process-model#dependency-of"
+rel="owl:inverseOf"><code>pm:dependency-of</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="involves" class="section" about="[pm:involves]"
+typeof="owl:ObjectProperty">
+
+#### `involves`
+
+A `pm:Action` may involve one or more `foaf:Agent`.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:domain"><code>pm:Action</code></a>
+
+Range:  
+<a href="http://xmlns.com/foaf/spec/#term_Agent" rel="rdfs:range"
+resource="foaf:Agent"><code>foaf:Agent</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#involved-in"
+rel="owl:inverseOf"><code>pm:involved-in</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -489,18 +661,22 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 <div id="method" class="section" about="[pm:method]"
 typeof="owl:ObjectProperty">
 
-### method
+#### `method`
 
-All Tasks must identify an associated Method which will be used to
-complete them.
+A `pm:Action` can identify an associated `pm:Method` which will be used
+to complete it.
 
 Domain:  
-<a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:domain">pm:Task</a>
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:domain"><code>pm:Action</code></a>
 
 Range:  
 <a href="https://vocab.methodandstructure.com/process-model#Method"
-rel="rdfs:range">pm:Method</a>
+rel="rdfs:range"><code>pm:Method</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#instance"
+rel="owl:inverseOf"><code>pm:instance</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -510,21 +686,30 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 <div id="outcome" class="section" about="[pm:outcome]"
 typeof="owl:ObjectProperty">
 
-### outcome
+#### `outcome`
 
-All Actions have an outcome, which is some kind of State.
+Every `pm:Action` has an outcome, which is some kind of `ibis:State`.
+
+Sub-property of:  
+<a href="https://www.w3.org/TR/prov-o/#generated"
+rel="rdfs:subPropertyOf"
+resource="prov:generated"><code>prov:generated</code></a>
+
+<a href="https://motools.sourceforge.net/event/event.html#term_product"
+rel="rdfs:subPropertyOf"
+resource="ev:product"><code>ev:product</code></a>
 
 Domain:  
 <a href="https://vocab.methodandstructure.com/process-model#Action"
-rel="rdfs:domain">pm:Action</a>
+rel="rdfs:domain"><code>pm:Action</code></a>
 
 Range:  
-<a href="https://vocab.methodandstructure.com/process-model#State"
-rel="rdfs:range">pm:State</a>
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="rdfs:range"><code>ibis:State</code></a>
 
-Sub-property of:  
-<a href="http://purl.org/NET/c4dm/event.owl#product"
-rel="rdfs:subPropertyOf">ev:product</a>
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#outcome"
+rel="owl:inverseOf"><code>pm:outcome</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -534,47 +719,152 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 <div id="performer" class="section" about="[pm:performer]"
 typeof="owl:ObjectProperty">
 
-### performer
+#### `performer`
 
 A performer is a real, live (at the time of performance) person who
 performs a task.
 
-Sub-property of:  
-<a href="http://purl.org/NET/c4dm/event.owl#agent"
-rel="rdfs:subPropertyOf">ev:agent</a>
-
 Domain:  
 <a href="https://vocab.methodandstructure.com/process-model#Action"
-rel="rdfs:domain">pm:Action</a>
+rel="rdfs:domain"><code>pm:Action</code></a>
 
 Range:  
-<a href="http://xmlns.com/foaf/0.1/Person"
-rel="rdfs:range">foaf:Person</a>
+<a href="http://xmlns.com/foaf/spec/#term_Person" rel="rdfs:range"
+resource="foaf:Person"><code>foaf:Person</code></a>
+
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/process-model#involves"
+rel="rdfs:subPropertyOf"><code>pm:involves</code></a>
+
+<a href="https://www.w3.org/TR/prov-o/#wasAttributedTo"
+rel="rdfs:subPropertyOf"
+resource="prov:wasAttributedTo"><code>prov:wasAttributedTo</code></a>
+
+<a href="https://motools.sourceforge.net/event/event.html#term_agent"
+rel="rdfs:subPropertyOf" resource="ev:agent"><code>ev:agent</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#performs"
+rel="owl:inverseOf"><code>pm:performs</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
 
-<div id="responsible" class="section" about="[pm:responsible]"
-typeof="owl:ObjectProperty">
+<div id="variant" class="section" about="[pm:variant]"
+typeof="owl:ObjectProperty owl:SymmetricProperty">
 
-### responsible
+#### `variant`
 
-The person responsible for a task may not be the one performing it, but
-they are the one accountable for its completion.
+A variant is an alternate method of performing the same action.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:domain"><code>pm:Action</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:range"><code>pm:Action</code></a>
 
 Sub-property of:  
-<a href="http://purl.org/NET/c4dm/event.owl#agent"
-rel="rdfs:subPropertyOf">ev:agent</a>
+<a href="https://www.w3.org/TR/skos-reference/#semantic-relations"
+rel="rdfs:subPropertyOf"
+resource="skos:related"><code>skos:related</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+</div>
+
+<div id="sec-domain-method" class="section">
+
+### Method-Related
+
+<div id="instance" class="section" about="[pm:instance]"
+typeof="owl:ObjectProperty">
+
+#### `instance`
+
+A `pm:Action` is an instance of a `pm:Method`.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Method"
+rel="rdfs:domain"><code>pm:Method</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:range"><code>pm:Action</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#method"
+rel="owl:inverseOf"><code>pm:method</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+</div>
+
+<div id="sec-domain-task" class="section">
+
+### Task-Related
+
+<div id="achieves" class="section" about="[pm:achieves]"
+typeof="owl:ObjectProperty">
+
+#### `achieves`
+
+The purpose of a task is to achieve a goal. Every `pm:Task` specified in
+this vocabulary must also specify the `pm:Goal` they are intended to
+achieve.
 
 Domain:  
 <a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:domain">pm:Task</a>
+rel="rdfs:domain"><code>pm:Task</code></a>
 
 Range:  
-<a href="http://xmlns.com/foaf/0.1/Person"
-rel="rdfs:range">foaf:Person</a>
+<a href="https://vocab.methodandstructure.com/process-model#Goal"
+rel="rdfs:range"><code>pm:Goal</code></a>
+
+Sub-property of:  
+<a href="https://www.w3.org/TR/skos-reference/#semantic-relations"
+rel="rdfs:subPropertyOf"
+resource="skos:semanticRelation"><code>skos:semanticRelation</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#outcome"
+rel="rdfs:subPropertyOf"><code>pm:outcome</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#achieved-by"
+rel="owl:inverseOf"><code>pm:achieved-by</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="initiated-by" class="section" about="[pm:initiated-by]"
+typeof="owl:ObjectProperty owl:InverseFunctionalProperty">
+
+#### `initiated-by`
+
+This connects a selected `pm:Task` to the `pm:Target` that initiated it.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Task"
+rel="rdfs:domain"><code>pm:Task</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Target"
+rel="rdfs:range"><code>pm:Target</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#initiates"
+rel="owl:inverseOf"><code>pm:initiates</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -584,18 +874,53 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 <div id="recipient" class="section" about="[pm:recipient]"
 typeof="owl:ObjectProperty">
 
-### recipient
+#### `recipient`
 
 A recipient of a task is a (real, live at the time of receipt) person
 who receives and approves its product or products.
 
 Domain:  
 <a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:domain">pm:Task</a>
+rel="rdfs:domain"><code>pm:Task</code></a>
 
 Range:  
-<a href="http://xmlns.com/foaf/0.1/Person"
-rel="rdfs:range">foaf:Person</a>
+<a href="http://xmlns.com/foaf/spec/#term_Person" rel="rdfs:range"
+resource="foaf:Person"><code>foaf:Person</code></a>
+
+Inverse of:  
+<a
+href="https://vocab.methodandstructure.com/process-model#responsible-for"
+rel="owl:inverseOf"><code>pm:responsible-for</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="responsible" class="section" about="[pm:responsible]"
+typeof="owl:ObjectProperty">
+
+#### `responsible`
+
+The person responsible for a task may not be the one performing it, but
+they are the one accountable for its completion.
+
+Sub-property of:  
+<a href="https://motools.sourceforge.net/event/event.html#term_agent"
+rel="rdfs:subPropertyOf" resource="ev:agent"><code>ev:agent</code></a>
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Task"
+rel="rdfs:domain"><code>pm:Task</code></a>
+
+Range:  
+<a href="http://xmlns.com/foaf/spec/#term_Person" rel="rdfs:range"
+resource="foaf:Person"><code>foaf:Person</code></a>
+
+Inverse of:  
+<a
+href="https://vocab.methodandstructure.com/process-model#responsible-for"
+rel="owl:inverseOf"><code>pm:responsible-for</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -605,17 +930,17 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 <div id="status" class="section" about="[pm:status]"
 typeof="owl:ObjectProperty">
 
-### status
+#### `status`
 
 The status of a Task at any instant is a State.
 
 Domain:  
 <a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:domain">pm:Task</a>
+rel="rdfs:domain"><code>pm:Task</code></a>
 
 Range:  
-<a href="https://vocab.methodandstructure.com/process-model#State"
-rel="rdfs:range">pm:State</a>
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="rdfs:range"><code>ibis:State</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -625,45 +950,53 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 <div id="subtask" class="section" about="[pm:subtask]"
 typeof="owl:ObjectProperty">
 
-### subtask
+#### `subtask`
 
-This property narrows the domain and range of ev:sub_event to Tasks.
+This property narrows the domain and range of `ev:sub_event` to
+`pm:Task`.
 
 Domain:  
 <a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:domain">pm:Task</a>
+rel="rdfs:domain"><code>pm:Task</code></a>
 
 Range:  
 <a href="https://vocab.methodandstructure.com/process-model#Task"
-rel="rdfs:range">pm:Task</a>
+rel="rdfs:range"><code>pm:Task</code></a>
 
 Sub-property of:  
-<a href="http://purl.org/NET/c4dm/event.owl#sub_event"
-rel="rdfs:subPropertyOf">ev:sub_event</a>
+<a href="https://vocab.methodandstructure.com/ibis#generalizes"
+rel="rdfs:subPropertyOf"><code>ibis:generalizes</code></a>
+
+<a
+href="https://motools.sourceforge.net/event/event.html#term_sub_event"
+rel="rdfs:subPropertyOf"
+resource="ev:sub_event"><code>ev:sub_event</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
 
-<div id="variant" class="section" about="[pm:variant]"
+<div id="supertask" class="section" about="[pm:supertask]"
 typeof="owl:ObjectProperty">
 
-### variant
-
-A variant is an alternate method of performing the same action.
+#### `supertask`
 
 Domain:  
-<a href="https://vocab.methodandstructure.com/process-model#Action"
-rel="rdfs:domain">pm:Action</a>
+<a href="https://vocab.methodandstructure.com/process-model#Task"
+rel="rdfs:domain"><code>pm:Task</code></a>
 
 Range:  
-<a href="https://vocab.methodandstructure.com/process-model#Action"
-rel="rdfs:range">pm:Action</a>
+<a href="https://vocab.methodandstructure.com/process-model#Task"
+rel="rdfs:range"><code>pm:Task</code></a>
 
 Sub-property of:  
-<a href="http://purl.org/NET/c4dm/event.owl#sub_event"
-rel="rdfs:subPropertyOf">ev:sub_event</a>
+<a href="https://vocab.methodandstructure.com/ibis#specializes"
+rel="rdfs:subPropertyOf"><code>ibis:specializes</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#subtask"
+rel="owl:inverseOf"><code>pm:subtask</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -673,6 +1006,124 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 </div>
 
 <div class="section">
+
+### Agent-Related
+
+<div id="involved-in" class="section" about="[pm:involved-in]"
+typeof="owl:ObjectProperty">
+
+#### `involved-in`
+
+A `foaf:Agent` may be involved in a `pm:Task`
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Task"
+rel="rdfs:domain"><code>pm:Task</code></a>
+
+Range:  
+<a href="http://xmlns.com/foaf/spec/#term_Agent" rel="rdfs:range"
+resource="foaf:Agent"><code>foaf:Agent</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="performs" class="section" about="[pm:performs]"
+typeof="owl:ObjectProperty">
+
+#### `performs`
+
+Domain:  
+<a href="http://xmlns.com/foaf/spec/#term_Person" rel="rdfs:domain"
+resource="foaf:Person"><code>foaf:Person</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Action"
+rel="rdfs:range"><code>pm:Action</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="recipient-of" class="section" about="[pm:recipient-of]"
+typeof="owl:ObjectProperty">
+
+#### `recipient-of`
+
+Domain:  
+<a href="http://xmlns.com/foaf/spec/#term_Person" rel="rdfs:domain"
+resource="foaf:Person"><code>foaf:Person</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Task"
+rel="rdfs:range"><code>pm:Task</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#recipient"
+rel="owl:inverseOf"><code>pm:recipient</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="responsible-for" class="section" about="[pm:responsible-for]"
+typeof="owl:ObjectProperty">
+
+#### `responsible-for`
+
+Domain:  
+<a href="http://xmlns.com/foaf/spec/#term_Person" rel="rdfs:domain"
+resource="foaf:Person"><code>foaf:Person</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Task"
+rel="rdfs:range"><code>pm:Task</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#responsible"
+rel="owl:inverseOf"><code>pm:responsible</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="wants" class="section" about="[pm:wants]"
+typeof="owl:ObjectProperty">
+
+#### `wants`
+
+A `foaf:Agent` may want a `pm:Goal`.
+
+Domain:  
+<a href="http://xmlns.com/foaf/spec/#term_Agent" rel="rdfs:domain"
+resource="foaf:Agent"><code>foaf:Agent</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/process-model#Goal"
+rel="rdfs:range"><code>pm:Goal</code></a>
+
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/ibis#endorses"
+rel="rdfs:subPropertyOf"><code>ibis:endorses</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#wanted-by"
+rel="owl:inverseOf"><code>pm:wanted-by</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="ch-individuals" class="section" about="#ch-individuals">
 
 ## Individuals
 
@@ -684,9 +1135,9 @@ assigned or a valid Method, should be able to be derived from other
 data.
 
 <div id="ABORTED" class="section" about="[pm:ABORTED]"
-typeof="pm:State">
+typeof="ibis:State">
 
-### ABORTED
+### `ABORTED`
 
 The task is aborted.
 
@@ -696,9 +1147,9 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 </div>
 
 <div id="COMPLETE" class="section" about="[pm:COMPLETE]"
-typeof="pm:State">
+typeof="ibis:State">
 
-### COMPLETE
+### `COMPLETE`
 
 The task is complete.
 
@@ -708,9 +1159,9 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 </div>
 
 <div id="IN-PROGRESS" class="section" about="[pm:IN-PROGRESS]"
-typeof="pm:State">
+typeof="ibis:State">
 
-### IN-PROGRESS
+### `IN-PROGRESS`
 
 The task is in progress.
 
@@ -720,9 +1171,9 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 </div>
 
 <div id="STALLED" class="section" about="[pm:STALLED]"
-typeof="pm:State">
+typeof="ibis:State">
 
-### STALLED
+### `STALLED`
 
 The task is stalled.
 
@@ -730,5 +1181,25 @@ The task is stalled.
 rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
+
+</div>
+
+<div id="ch-references" class="section" about="#ch-references">
+
+## References
+
+This process model vocabulary connects and extends the following
+vocabularies:
+
+- <a href="https://vocab.methodandstructure.com/ibis#"
+  rel="owl:imports">The IBIS (bis) Vocabulary</a>
+- <a href="https://www.w3.org/TR/prov-o/" rel="owl:imports"
+  resource="http://www.w3.org/ns/prov#">PROV-O: The PROV Ontology</a>
+- <a href="https://motools.sourceforge.net/event/event.html"
+  rel="owl:imports" resource="http://purl.org/NET/c4dm/event.owl#">The
+  Event Ontology</a>
+- <a href="https://www.w3.org/TR/skos-reference/" rel="owl:imports"
+  resource="http://www.w3.org/2004/02/skos/core#">Simple Knowledge
+  Organization System</a>
 
 </div>

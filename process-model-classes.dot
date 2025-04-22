@@ -1,28 +1,31 @@
 digraph {
-    graph [bgcolor=transparent,overlap=false,rankdir="LR"];
-    node [shape=box,color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
-    edge [color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+    graph [bgcolor=transparent,overlap=false,rankdir=TB];
+    node [shape=box,color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif",target="_parent"];
+    edge [fontsize=10,concentrate=true,color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+
     subgraph {
         node [style=dashed];
-        skos_Concept [label="skos:Concept"];
-        ev_Event [label="ev:Event"];
-        ibis_Issue [label="ibis:Issue"];
-        ibis_Position [label="ibis:Position"];
+	ibis_State    [label="ibis:State", href="https://vocab.methodandstructure.com/ibis#State"];
+	prov_Activity [label="prov:Activity", href="https://www.w3.org/TR/prov-o/#Activity"];
+        ev_Event      [label="ev:Event", href="http://motools.sourceforge.net/event/event.html#term_Event"];
+        ibis_Entity   [label="ibis:Entity", href="https://vocab.methodandstructure.com/ibis#Entity"];
+        ibis_Issue    [label="ibis:Issue", href="https://vocab.methodandstructure.com/ibis#Issue"];
+        ibis_Position [label="ibis:Position" href="https://vocab.methodandstructure.com/ibis#Position"];
+        skos_Concept  [label="skos:Concept", href="https://www.w3.org/TR/skos-reference/#concepts"];
     }
 
-    pm_State [label="pm:State"];
-    pm_Goal [label="pm:Goal"];
-    pm_Target [label="pm:Target"];
-    pm_Action [label="pm:Action"];
-    pm_Task [label="pm:Task"];
-    pm_Method [label="pm:Method"];
+    pm_Goal   [label="pm:Goal", href="https://vocab.methodandstructure.com/process-model#Goal"];
+    pm_Target [label="pm:Target", href="https://vocab.methodandstructure.com/process-model#Target"];
+    pm_Action [label="pm:Action", href="https://vocab.methodandstructure.com/process-model#Action"];
+    pm_Task   [label="pm:Task", href="https://vocab.methodandstructure.com/process-model#Task"];
+    pm_Method [label="pm:Method", href="https://vocab.methodandstructure.com/process-model#Method"];
 
     subgraph {
-        edge [style=dashed];
-        skos_Concept -> pm_State -> pm_Goal -> pm_Target;
-        skos_Concept -> ibis_Issue -> pm_Goal;
-        skos_Concept -> ibis_Position -> pm_Task;
-        ev_Event -> pm_Action -> pm_Task;
-        pm_Action -> pm_Method;
+        edge [style=dashed, label="rdfs:subClassOf"];
+	pm_Target -> pm_Goal -> ibis_Issue -> ibis_State -> ibis_Entity -> skos_Concept;
+	pm_Task -> ibis_Position -> ibis_Entity;
+	pm_Task -> pm_Action -> ev_Event;
+	pm_Method -> pm_Action -> prov_Activity;
     }
+
 }

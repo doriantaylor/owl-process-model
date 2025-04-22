@@ -1,9 +1,37 @@
 digraph {
-    graph [bgcolor=transparent,overlap=false,rankdir="TB"];
-    node [shape=box,color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
-    edge [color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+    graph [bgcolor=transparent,overlap=false,rankdir=LR];
+    node [shape=box,style=rounded,color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif", target="_parent"];
+    edge [concentrate=true,color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+
+    // third-party classses
+
     subgraph {
-        node [style=dashed];
+        node [shape=box, style=dashed];
+        // skos_Concept [label="skos:Concept"];
+        ev_Event [label="ev:Event", href="http://motools.sourceforge.net/event/event.html#term_Event"];
+        foaf_Agent [label="foaf:Agent", href="http://xmlns.com/foaf/spec/#term_Agent"];
+        foaf_Person [label="foaf:Person", href="http://xmlns.com/foaf/spec/#term_Person"];
+        // ibis_Issue [label="ibis:Issue", href="https://vocab.methodandstructure.com/ibis#Issue"];
+        // ibis_Position [label="ibis:Position", href="https://vocab.methodandstructure.com/ibis#Position"];
+	// time_Instant [label="time:Instant", href="https://www.w3.org/TR/owl-time/#time:Instant"];
+	ibis_State [label="ibis:State", href="https://vocab.methodandstructure.com/ibis#State"];
+    }
+
+    // our classes
+
+    subgraph {
+        node [shape=box, style=""];
+	pm_Goal   [label="pm:Goal", href="https://vocab.methodandstructure.com/process-model#Goal"];
+	pm_Target [label="pm:Target", href="https://vocab.methodandstructure.com/process-model#Target"];
+	pm_Action [label="pm:Action", href="https://vocab.methodandstructure.com/process-model#Action"];
+	pm_Task   [label="pm:Task", href="https://vocab.methodandstructure.com/process-model#Task"];
+	pm_Method [label="pm:Method", href="https://vocab.methodandstructure.com/process-model#Method"];
+    }
+
+    // third-party properties
+
+    subgraph {
+        node [style="dashed,rounded"];
         ev_agent [label="ev:agent"];
         ev_factor [label="ev:factor"];
         ev_product [label="ev:product"];
@@ -14,32 +42,95 @@ digraph {
         ibis_specializes [label="ibis:specializes"];
     }
 
-pm_achieves [label="pm:achieves"];
-pm_anchors [label="pm:anchors"];
-//pm_budget [label="pm:budget"];
-pm_context [label="pm:context"];
-pm_desires [label="pm:desires"];
-//pm_due [label="pm:due"];
-pm_initiates [label="pm:initiates"];
-//pm_method [label="pm:method"];
-pm_outcome [label="pm:outcome"];
-pm_performer [label="pm:performer"];
-//pm_recipient [label="pm:recipient"];
-pm_responsible [label="pm:responsible"];
-pm_subtask [label="pm:subtask"];
-pm_variant [label="pm:variant"];
+    // datatypes
 
     subgraph {
-        edge [style=dashed];
-        ev_factor -> pm_context;
-        ev_product -> pm_outcome -> pm_achieves;
-        ev_agent -> pm_performer;
-        ev_agent -> pm_responsible;
-        ev_sub_event -> pm_subtask;
-        ev_sub_event -> pm_variant;
-        ibis_endorses -> pm_desires;
-        ibis_response -> pm_initiates;
-        ibis_responds_to -> pm_achieves;
-        ibis_specializes -> pm_anchors;
+	node [shape=note,style="dashed"];
+	xsd_decimal [label="xsd:decimal", href="https://www.w3.org/TR/xmlschema11-2/#decimal"];
+	xsd_dateTime [label="xsd:dateTime", href="https://www.w3.org/TR/xmlschema11-2/#dateTime"];
+    }
+
+    // our properties
+
+    pm_achieves [label="pm:achieves", href="https://vocab.methodandstructure.com/process-model#achieves"];
+    pm_anchors [label="pm:anchors", href="https://vocab.methodandstructure.com/process-model#anchors"];
+    pm_budget [label="pm:budget", href="https://vocab.methodandstructure.com/process-model#budget"];
+    pm_context [label="pm:context", href="https://vocab.methodandstructure.com/process-model#context"];
+    pm_dependency [label="pm:dependency", href="https://vocab.methodandstructure.com/process-model#dependency"];
+    pm_desires [label="pm:desires", href="https://vocab.methodandstructure.com/process-model#desires"];
+    pm_due [label="pm:due", href="https://vocab.methodandstructure.com/process-model#due"];
+    pm_initiates [label="pm:initiates", href="https://vocab.methodandstructure.com/process-model#initiates"];
+    pm_method [label="pm:method", href="https://vocab.methodandstructure.com/process-model#method"];
+    pm_outcome [label="pm:outcome", href="https://vocab.methodandstructure.com/process-model#outcome"];
+    pm_performer [label="pm:performer", href="https://vocab.methodandstructure.com/process-model#performer"];
+    //pm_recipient [label="pm:recipient"];
+    pm_responsible [label="pm:responsible", href="https://vocab.methodandstructure.com/process-model#responsible"];
+    pm_status [label="pm:status", href="https://vocab.methodandstructure.com/process-model#status"];
+    pm_subtask [label="pm:subtask", href="https://vocab.methodandstructure.com/process-model#subtask"];
+    pm_variant [label="pm:variant", href="https://vocab.methodandstructure.com/process-model#variant"];
+
+    // relations
+
+    subgraph {
+        edge [style=dashed, label="rdfs:subClassOf"];
+	foaf_Person -> foaf_Agent;
+	pm_Method   -> pm_Action;
+	pm_Target   -> pm_Goal   -> ibis_State;
+	pm_Task     -> pm_Action -> ev_Event;
+    }
+
+    subgraph {
+        edge [style=dashed, label="rdfs:subPropertyOf"];
+	pm_achieves    -> ibis_responds_to;
+	pm_achieves    -> pm_outcome -> ev_product;
+	pm_anchors     -> ibis_specializes;
+	pm_context     -> ev_factor;
+	pm_desires     -> ibis_endorses;
+	pm_initiates   -> ibis_response;
+	pm_performer   -> ev_agent;
+	pm_responsible -> ev_agent;
+	pm_subtask     -> ev_sub_event;
+        // pm_variant      -> ev_sub_event;
+    }
+
+    subgraph {
+        edge [style=dashed, dir=back, label="rdfs:domain"];
+	ev_Event   -> ev_factor;
+	ev_Event   -> ev_product;
+	ev_Event   -> ev_sub_event;
+	pm_Task    -> pm_achieves;
+	pm_Target  -> pm_anchors;
+	pm_Target  -> pm_budget;
+	pm_Action  -> pm_context;
+	pm_Action  -> pm_dependency;
+	foaf_Agent -> pm_desires;
+	pm_Target  -> pm_due;
+	pm_Target  -> pm_initiates;
+	pm_Action  -> pm_method;
+	pm_Action  -> pm_outcome;
+	pm_Task    -> pm_performer;
+	pm_Task    -> pm_responsible;
+	pm_Task    -> pm_subtask;
+	pm_Action  -> pm_variant;
+    }
+
+    subgraph {
+        edge [style=dashed, label="rdfs:range"];
+	ev_sub_event   -> ev_Event;
+	pm_achieves    -> pm_Goal;
+	pm_anchors     -> pm_Goal;
+	pm_budget      -> xsd_decimal;
+	pm_context     -> ibis_State;
+	pm_dependency  -> ibis_State;
+	pm_desires     -> pm_Goal;
+	pm_due         -> xsd_dateTime;
+	pm_initiates   -> pm_Task;
+	pm_method      -> pm_Method;
+	pm_outcome     -> ibis_State;
+	pm_performer   -> foaf_Person;
+	pm_responsible -> foaf_Person;
+	pm_status      -> ibis_State;
+	pm_subtask     -> pm_Task;
+	pm_variant     -> pm_Action;
     }
 }
