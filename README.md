@@ -133,10 +133,12 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 A `pm:Target` connects a *qualitative* `pm:Goal` to a specific
 `pm:Task`, and a concrete, *quantitative* allocation of resources.
 
-The logical separation of a `pm:Target` from a `pm:Goal` makes it
-possible to speak of a `pm:Goal` in abstract terms, and generate several
-equivalent candidate `pm:Tasks`, each with one or more candidate
-`pm:Methods`, which may achieve it.
+The reason why `pm:Target` is distinct from `pm:Goal` is because we can
+imagine more than one competing candidate `pm:Task` with different cost
+and effort profiles. Without this information, any goal—or target, for
+that matter—is merely aspirational. A target is therefore intended to
+marry a particular goal to a particular concrete strategy for achieving
+it.
 
 Subclass of:  
 <a href="https://vocab.methodandstructure.com/process-model#Goal"

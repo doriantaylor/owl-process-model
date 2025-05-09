@@ -86,7 +86,8 @@
         <h3><code property="rdfs:label" datatype="xsd:token">Target</code></h3>
         <p property="rdfs:comment">A <code>pm:Target</code> connects a <em>qualitative</em> <code>pm:Goal</code> to a specific <code>pm:Task</code>, and a concrete, <em>quantitative</em> allocation of resources.</p>
         <aside role="note">
-          <p property="skos:note">The logical separation of a <code>pm:Target</code> from a <code>pm:Goal</code> makes it possible to speak of a <code>pm:Goal</code> in abstract terms, and generate several equivalent candidate <code>pm:Tasks</code>, each with one or more candidate <code>pm:Methods</code>, which may achieve it.</p>
+          <!--<p property="skos:note">The logical separation of a <code>pm:Target</code> from a <code>pm:Goal</code> makes it possible to speak of a <code>pm:Goal</code> in abstract terms, and generate several equivalent candidate <code>pm:Tasks</code>, each with one or more candidate <code>pm:Methods</code>, which may achieve it.</p>-->
+          <p property="skos:note">The reason why <code>pm:Target</code> is distinct from <code>pm:Goal</code> is because we can imagine more than one competing candidate <code>pm:Task</code> with different cost and effort profiles. Without this information, any goal&#x2014;or target, for that matter&#x2014;is merely aspirational. A target is therefore intended to marry a particular goal to a particular concrete strategy for achieving it.</p>
         </aside>
         <dl>
           <dt>Subclass of:</dt>
