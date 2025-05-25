@@ -974,6 +974,10 @@ href="https://motools.sourceforge.net/event/event.html#term_sub_event"
 rel="rdfs:subPropertyOf"
 resource="ev:sub_event"><code>ev:sub_event</code></a>
 
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#supertask"
+rel="owl:inverseOf"><code>pm:supertask</code></a>
+
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
 

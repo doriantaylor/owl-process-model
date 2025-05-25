@@ -517,6 +517,8 @@
             <dt>Sub-property of:</dt>
 	    <dd><a rel="rdfs:subPropertyOf" href="https://vocab.methodandstructure.com/ibis#generalizes"><code>ibis:generalizes</code></a></dd>
             <dd><a rel="rdfs:subPropertyOf" resource="ev:sub_event" href="https://motools.sourceforge.net/event/event.html#term_sub_event"><code>ev:sub_event</code></a></dd>
+            <dt>Inverse of:</dt>
+            <dd><a rel="owl:inverseOf" href="#supertask"><code>pm:supertask</code></a></dd>
           </dl>
           <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
         </section>
