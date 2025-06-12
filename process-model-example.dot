@@ -20,6 +20,11 @@ digraph {
     }
 
     subgraph {
+        node [shape=note];
+        pm_ARQ [label="pm:ARQ", href="https://vocab.methodandstructure.com/process-model#"];
+    }
+
+    subgraph {
         node [shape=note,style=dashed];
         xsd_decimal [label="xsd:decimal"];
         xsd_dateTime [label="xsd:dateTime"];
@@ -35,11 +40,12 @@ digraph {
         edge [label="rdfs:subClassOf", style=dashed];
         foaf_Person -> foaf_Agent;
         ibis_Argument -> ibis_Issue -> ibis_State -> ibis_Entity -> skos_Concept;
+        pm_ARQ    -> xsd_decimal;
         pm_Action -> prov_Activity;
         pm_Method -> pm_Action;
         pm_Target -> pm_Goal -> ibis_Issue;
-        pm_Task -> ibis_Position -> ibis_Entity;
-        pm_Task -> pm_Action -> ev_Event;
+        pm_Task   -> ibis_Position -> ibis_Entity;
+        pm_Task   -> pm_Action -> ev_Event;
     }
 
     subgraph {
@@ -57,6 +63,8 @@ digraph {
     pm_Action  -> ibis_State   [label="pm:context"];
     pm_Action  -> pm_Action    [label="pm:variant"];
     pm_Action  -> pm_Method    [label="pm:method"];
+    pm_Goal    -> xsd_decimal  [label="pm:valuation", weight=1];
+    pm_Goal    -> xsd_dateTime [label="pm:expires", weight=1];
     pm_Target  -> pm_Goal      [label="pm:anchors", weight=1];
     pm_Target  -> pm_Task      [label="pm:initiates"];
     pm_Target  -> xsd_dateTime [label="pm:due", weight=1];

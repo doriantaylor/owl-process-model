@@ -31,7 +31,7 @@
         <dt>Author</dt>
         <dd><a rel="dct:creator" href="http://doriantaylor.com/person/dorian-taylor#me"><span property="foaf:name">Dorian Taylor</span></a></dd>
         <dt>Version</dt>
-        <dd property="owl:versionInfo" datatype="xsd:string">0.2</dd>
+        <dd property="owl:versionInfo" datatype="xsd:string">0.2.1</dd>
         <dt>Created</dt>
         <dd property="dct:created" datatype="xsd:dateTime" content="2009-07-23T00:56:12Z">July 22, 2009</dd>
         <dt>Updated</dt>
@@ -39,6 +39,7 @@
         <dd property="dct:modified" datatype="xsd:dateTime" content="2017-04-06T22:24:06Z">April 6, 2017</dd>
         <dd property="dct:modified" datatype="xsd:dateTime" content="2020-03-08T18:58:53Z">March 8, 2020</dd>
         <dd property="dct:modified" datatype="xsd:dateTime" content="2025-04-09T23:18:53Z">April 9, 2025</dd>
+        <dd property="dct:modified" datatype="xsd:dateTime" content="2025-06-11T03:15:09Z">June 10, 2025</dd>
         <dt>Namespace URI</dt>
         <dd><a about="#" rel="sh:namespace vann:preferredNamespaceUri" href="#"><code>https://vocab.methodandstructure.com/process-model#</code></a></dd>
         <dt>Preferred Namespace Prefix</dt>
@@ -224,6 +225,43 @@
           </dl>
           <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
         </section>
+        <section id="expires" about="[pm:expires]" typeof="owl:DatatypeProperty">
+          <h4><code property="rdfs:label">expires</code></h4>
+          <p property="rdfs:comment" datatype="xsd:token">This serves as a hard expiry date for a given <code>pm:Goal</code>, such that after it elapses, any valuation ascribed to the goal goes to zero.</p>
+          <aside role="note">
+            <p property="skos:usageNote">You would use <code>pm:expires</code> (ideally in conjunction with <code>pm:valuation</code>) to express a window of opportunity.</p>
+          </aside>
+          <dl>
+            <dt>Domain:</dt>
+            <dd><a rel="rdfs:domain" href="#Goal">pm:Goal</a></dd>
+            <dt>Range:</dt>
+            <dd><a rel="rdfs:range" resource="xsd:dateTime" href="http://www.w3.org/TR/xmlschema-2/#dateTime"><code>xsd:dateTime</code></a></dd>
+            <dt>Cardinality:</dt>
+            <dd><code property="owl:cardinality" datatype="xsd:integer">1</code></dd>
+            <dt>See also:</dt>
+            <dd><a rel="rdfs:seeAlso" href="https://www.youtube.com/watch?v=fiSjxr8xG6A">Timing test for methodology talk</a></dd>
+          </dl>
+          <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
+        </section>
+        <section id="valuation" about="[pm:valuation]" typeof="owl:DatatypeProperty">
+          <h4><code property="rdfs:label" datatype="xsd:token">valuation</code></h4>
+          <p property="rdfs:comment">A <code>pm:Goal</code> can be ascribed a quantity that represents, in some unspecified unit, the marginal, potentially discounted value of achieving the goal.</p>
+          <aside role="note">
+            <p property="skos:editorialNote">This property is provisional, and if it remains, will be relegated to a computed outcome from some depreciation function, which has yet to be defined.</p>
+          </aside>
+          <dl>
+            <dt>Domain:</dt>
+            <dd><a rel="rdfs:domain" href="#Goal"><code>pm:Goal</code></a></dd>
+            <dt>Range:</dt>
+            <dd><a rel="rdfs:range" resource="xsd:decimal" href="http://www.w3.org/TR/xmlschema-2/#decimal"><code>xsd:decimal</code></a></dd>
+            <dt>Cardinality:</dt>
+            <dd><code property="owl:cardinality" datatype="xsd:integer">1</code></dd>
+            <dt>See also:</dt>
+            <dd><a rel="rdfs:seeAlso" href="#ARQ"><code>pm:ARQ</code></a></dd>
+            <dd><a rel="rdfs:seeAlso" href="https://www.youtube.com/watch?v=fiSjxr8xG6A">Timing test for methodology talk</a></dd>
+          </dl>
+          <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
+        </section>
         <section id="wanted-by" about="[pm:wanted-by]" typeof="owl:ObjectProperty">
           <h4><code property="rdfs:label" datatype="xsd:token">wanted-by</code></h4>
           <p property="rdfs:comment">The identifying feature of a <code>pm:Goal</code> is that somebody wants it to happen.</p>
@@ -260,25 +298,24 @@
         <section id="budget" about="[pm:budget]" typeof="owl:DatatypeProperty">
           <h4><code property="rdfs:label" datatype="xsd:token">budget</code></h4>
           <p property="rdfs:comment">Every <code>pm:Target</code> has to have a quantitative budget of resources assigned to it. It need not be denominated in currency (e.g. it could be person-hours).</p>
-          <aside role="note">
-            <p property="skos:editorialNote">I am contemplating changing this to <code>pm:valuation</code> to refer to the value-based process model.</p>
-            <p property="skos:editorialNote">It is not clear, prior to implementation, if we should keep the budget as a raw quantity, or create some kind of resource envelope object.</p>
-          </aside>
           <dl>
             <dt>Domain:</dt>
             <dd><a rel="rdfs:domain" href="#Target"><code>pm:Target</code></a></dd>
             <dt>Range:</dt>
             <dd><a rel="rdfs:range" resource="xsd:decimal" href="http://www.w3.org/TR/xmlschema-2/#decimal"><code>xsd:decimal</code></a></dd>
+            <dt>Sub-property of:</dt>
+            <dd><a rel="rdfs:subPropertyOf" href="#valuation"><code>pm:valuation</code></a></dd>
             <dt>Cardinality:</dt>
             <dd><code property="owl:cardinality" datatype="xsd:integer">1</code></dd>
             <dt>See also:</dt>
+            <dd><a rel="rdfs:seeAlso" href="#ARQ"><code>pm:ARQ</code></a></dd>
             <dd><a rel="rdfs:seeAlso" href="https://www.youtube.com/watch?v=fiSjxr8xG6A">Timing test for methodology talk</a></dd>
           </dl>
           <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
         </section>
         <section id="due" about="[pm:due]" typeof="owl:DatatypeProperty">
           <h4><code property="rdfs:label">due</code></h4>
-          <p property="rdfs:comment" datatype="xsd:token">Every <code>pm:Target</code> must have a due date, or expiry date after which the target is no longer viable.</p>
+          <p property="rdfs:comment" datatype="xsd:token">The due date of a <code>pm:Target</code> is a conventional deadline.</p>
           <aside role="note">
             <p property="skos:editorialNote">I am contemplating changing this to <code>pm:expires</code> to refer to the value-based process model.</p>
           </aside>
@@ -287,6 +324,8 @@
             <dd><a rel="rdfs:domain" href="#Target">pm:Target</a></dd>
             <dt>Range:</dt>
             <dd><a rel="rdfs:range" resource="xsd:dateTime" href="http://www.w3.org/TR/xmlschema-2/#dateTime"><code>xsd:dateTime</code></a></dd>
+            <dt>Sub-property of:</dt>
+            <dd><a rel="rdfs:subPropertyOf" href="#expires"><code>pm:expires</code></a></dd>
             <dt>Cardinality:</dt>
             <dd><code property="owl:cardinality" datatype="xsd:integer">1</code></dd>
             <dt>See also:</dt>
@@ -611,6 +650,21 @@
           <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
         </section>
       </section>
+    </section>
+    <section id="ch-individuals" about="#ch-individuals">
+      <h2>Data Types</h2>
+      <section id="ARQ" about="[pm:ARQ]" typeof="rdfs:Datatype">
+          <h4><code property="rdfs:label" datatype="xsd:token">ARQ</code></h4>
+          <p property="rdfs:comment">This is a stand-in datatype for an <dfn>abstract resource quantity</dfn>. Its purpose is to differentiate from <code>xsd:decimal</code>, which is indistinguishable from other real numbers.</p>
+          <p>An abstract resource quantity can mean anything you want: dollars, practitioner-hours, something else entirely. Treat it as the base unit of account for resource planning decisions.</p>
+          <dl>
+            <dt>Subclass of:</dt>
+            <dd><a rel="rdfs:subClassOf" href="https://www.w3.org/TR/xmlschema11-2/#decimal" resource="xsd:decimal"><code>xsd:decimal</code></a></dd>
+            <dt>See also:</dt>
+            <dd><a rel="rdfs:seeAlso" href="https://en.wikipedia.org/wiki/Unidade_real_de_valor">Unidade real de valor</a> (<abbr>URV</abbr>), a <q>non-monetary reference currency</q> introduced in the 1990s to curb hyperinflation in Brazil.</dd>
+          </dl>
+          <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
+        </section>
     </section>
     <section id="ch-individuals" about="#ch-individuals">
       <h2>Individuals</h2>

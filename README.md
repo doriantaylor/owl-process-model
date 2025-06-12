@@ -5,7 +5,7 @@ Author
 rel="dct:creator"><span property="foaf:name">Dorian Taylor</span></a>
 
 Version  
-0.2
+0.2.1
 
 Created  
 July 22, 2009
@@ -18,6 +18,8 @@ April 6, 2017
 March 8, 2020
 
 April 9, 2025
+
+June 10, 2025
 
 Namespace URI  
 <a href="https://vocab.methodandstructure.com/process-model#" about="#"
@@ -404,6 +406,73 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
 
+<div id="expires" class="section" about="[pm:expires]"
+typeof="owl:DatatypeProperty">
+
+#### `expires`
+
+This serves as a hard expiry date for a given `pm:Goal`, such that after
+it elapses, any valuation ascribed to the goal goes to zero.
+
+You would use `pm:expires` (ideally in conjunction with `pm:valuation`)
+to express a window of opportunity.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Goal"
+rel="rdfs:domain">pm:Goal</a>
+
+Range:  
+<a href="http://www.w3.org/TR/xmlschema-2/#dateTime" rel="rdfs:range"
+resource="xsd:dateTime"><code>xsd:dateTime</code></a>
+
+Cardinality:  
+`1`
+
+See also:  
+<a href="https://www.youtube.com/watch?v=fiSjxr8xG6A"
+rel="rdfs:seeAlso">Timing test for methodology talk</a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="valuation" class="section" about="[pm:valuation]"
+typeof="owl:DatatypeProperty">
+
+#### `valuation`
+
+A `pm:Goal` can be ascribed a quantity that represents, in some
+unspecified unit, the marginal, potentially discounted value of
+achieving the goal.
+
+This property is provisional, and if it remains, will be relegated to a
+computed outcome from some depreciation function, which has yet to be
+defined.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/process-model#Goal"
+rel="rdfs:domain"><code>pm:Goal</code></a>
+
+Range:  
+<a href="http://www.w3.org/TR/xmlschema-2/#decimal" rel="rdfs:range"
+resource="xsd:decimal"><code>xsd:decimal</code></a>
+
+Cardinality:  
+`1`
+
+See also:  
+<a href="https://vocab.methodandstructure.com/process-model#ARQ"
+rel="rdfs:seeAlso"><code>pm:ARQ</code></a>
+
+<a href="https://www.youtube.com/watch?v=fiSjxr8xG6A"
+rel="rdfs:seeAlso">Timing test for methodology talk</a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
 <div id="wanted-by" class="section" about="[pm:wanted-by]"
 typeof="owl:ObjectProperty">
 
@@ -477,12 +546,6 @@ Every `pm:Target` has to have a quantitative budget of resources
 assigned to it. It need not be denominated in currency (e.g. it could be
 person-hours).
 
-I am contemplating changing this to `pm:valuation` to refer to the
-value-based process model.
-
-It is not clear, prior to implementation, if we should keep the budget
-as a raw quantity, or create some kind of resource envelope object.
-
 Domain:  
 <a href="https://vocab.methodandstructure.com/process-model#Target"
 rel="rdfs:domain"><code>pm:Target</code></a>
@@ -491,10 +554,17 @@ Range:
 <a href="http://www.w3.org/TR/xmlschema-2/#decimal" rel="rdfs:range"
 resource="xsd:decimal"><code>xsd:decimal</code></a>
 
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/process-model#valuation"
+rel="rdfs:subPropertyOf"><code>pm:valuation</code></a>
+
 Cardinality:  
 `1`
 
 See also:  
+<a href="https://vocab.methodandstructure.com/process-model#ARQ"
+rel="rdfs:seeAlso"><code>pm:ARQ</code></a>
+
 <a href="https://www.youtube.com/watch?v=fiSjxr8xG6A"
 rel="rdfs:seeAlso">Timing test for methodology talk</a>
 
@@ -508,8 +578,7 @@ typeof="owl:DatatypeProperty">
 
 #### `due`
 
-Every `pm:Target` must have a due date, or expiry date after which the
-target is no longer viable.
+The due date of a `pm:Target` is a conventional deadline.
 
 I am contemplating changing this to `pm:expires` to refer to the
 value-based process model.
@@ -521,6 +590,10 @@ rel="rdfs:domain">pm:Target</a>
 Range:  
 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime" rel="rdfs:range"
 resource="xsd:dateTime"><code>xsd:dateTime</code></a>
+
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/process-model#expires"
+rel="rdfs:subPropertyOf"><code>pm:expires</code></a>
 
 Cardinality:  
 `1`
@@ -1124,6 +1197,40 @@ rel="owl:inverseOf"><code>pm:wanted-by</code></a>
 rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
+
+</div>
+
+</div>
+
+<div id="ch-individuals" class="section" about="#ch-individuals">
+
+## Data Types
+
+<div id="ARQ" class="section" about="[pm:ARQ]" typeof="rdfs:Datatype">
+
+#### `ARQ`
+
+This is a stand-in datatype for an <span class="dfn">abstract resource
+quantity</span>. Its purpose is to differentiate from `xsd:decimal`,
+which is indistinguishable from other real numbers.
+
+An abstract resource quantity can mean anything you want: dollars,
+practitioner-hours, something else entirely. Treat it as the base unit
+of account for resource planning decisions.
+
+Subclass of:  
+<a href="https://www.w3.org/TR/xmlschema11-2/#decimal"
+rel="rdfs:subClassOf"
+resource="xsd:decimal"><code>xsd:decimal</code></a>
+
+See also:  
+<a href="https://en.wikipedia.org/wiki/Unidade_real_de_valor"
+rel="rdfs:seeAlso">Unidade real de valor</a> (URV), a “non-monetary
+reference currency” introduced in the 1990s to curb hyperinflation in
+Brazil.
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
 

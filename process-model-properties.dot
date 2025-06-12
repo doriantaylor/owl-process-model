@@ -44,6 +44,11 @@ digraph {
 
     // datatypes
 
+    // subgraph {
+    //     node [shape=note];
+    //     pm_ARQ [label="pm:ARQ", href="https://vocab.methodandstructure.com/process-model#"];
+    // }
+
     subgraph {
 	node [shape=note,style="dashed"];
 	xsd_decimal [label="xsd:decimal", href="https://www.w3.org/TR/xmlschema11-2/#decimal"];
@@ -52,22 +57,25 @@ digraph {
 
     // our properties
 
-    pm_achieves [label="pm:achieves", href="https://vocab.methodandstructure.com/process-model#achieves"];
-    pm_anchors [label="pm:anchors", href="https://vocab.methodandstructure.com/process-model#anchors"];
-    pm_budget [label="pm:budget", href="https://vocab.methodandstructure.com/process-model#budget"];
-    pm_context [label="pm:context", href="https://vocab.methodandstructure.com/process-model#context"];
-    pm_dependency [label="pm:dependency", href="https://vocab.methodandstructure.com/process-model#dependency"];
-    pm_desires [label="pm:desires", href="https://vocab.methodandstructure.com/process-model#desires"];
-    pm_due [label="pm:due", href="https://vocab.methodandstructure.com/process-model#due"];
-    pm_initiates [label="pm:initiates", href="https://vocab.methodandstructure.com/process-model#initiates"];
-    pm_method [label="pm:method", href="https://vocab.methodandstructure.com/process-model#method"];
-    pm_outcome [label="pm:outcome", href="https://vocab.methodandstructure.com/process-model#outcome"];
-    pm_performer [label="pm:performer", href="https://vocab.methodandstructure.com/process-model#performer"];
-    //pm_recipient [label="pm:recipient"];
+    pm_achieves    [label="pm:achieves",    href="https://vocab.methodandstructure.com/process-model#achieves"];
+    pm_anchors     [label="pm:anchors",     href="https://vocab.methodandstructure.com/process-model#anchors"];
+    pm_budget      [label="pm:budget",      href="https://vocab.methodandstructure.com/process-model#budget"];
+    pm_context     [label="pm:context",     href="https://vocab.methodandstructure.com/process-model#context"];
+    pm_dependency  [label="pm:dependency",  href="https://vocab.methodandstructure.com/process-model#dependency"];
+    pm_due         [label="pm:due",         href="https://vocab.methodandstructure.com/process-model#due"];
+    pm_expires     [label="pm:expires",     href="https://vocab.methodandstructure.com/process-model#expires"];
+    pm_initiates   [label="pm:initiates",   href="https://vocab.methodandstructure.com/process-model#initiates"];
+    pm_involves    [label="pm:involves",    href="https://vocab.methodandstructure.com/process-model#involves"];
+    pm_method      [label="pm:method",      href="https://vocab.methodandstructure.com/process-model#method"];
+    pm_outcome     [label="pm:outcome",     href="https://vocab.methodandstructure.com/process-model#outcome"];
+    pm_performer   [label="pm:performer",   href="https://vocab.methodandstructure.com/process-model#performer"];
+    pm_recipient   [label="pm:recipient",   href="https://vocab.methodandstructure.com/process-model#recipient"];
     pm_responsible [label="pm:responsible", href="https://vocab.methodandstructure.com/process-model#responsible"];
-    pm_status [label="pm:status", href="https://vocab.methodandstructure.com/process-model#status"];
-    pm_subtask [label="pm:subtask", href="https://vocab.methodandstructure.com/process-model#subtask"];
-    pm_variant [label="pm:variant", href="https://vocab.methodandstructure.com/process-model#variant"];
+    pm_status      [label="pm:status",      href="https://vocab.methodandstructure.com/process-model#status"];
+    pm_subtask     [label="pm:subtask",     href="https://vocab.methodandstructure.com/process-model#subtask"];
+    pm_valuation   [label="pm:valuation",   href="https://vocab.methodandstructure.com/process-model#valuation"];
+    pm_variant     [label="pm:variant",     href="https://vocab.methodandstructure.com/process-model#variant"];
+    pm_wants       [label="pm:wants",       href="https://vocab.methodandstructure.com/process-model#wants"];
 
     // relations
 
@@ -85,12 +93,17 @@ digraph {
 	pm_achieves    -> pm_outcome -> ev_product;
 	pm_anchors     -> ibis_specializes;
 	pm_context     -> ev_factor;
-	pm_desires     -> ibis_endorses;
 	pm_initiates   -> ibis_response;
 	pm_performer   -> ev_agent;
 	pm_responsible -> ev_agent;
 	pm_subtask     -> ev_sub_event;
-        // pm_variant      -> ev_sub_event;
+	pm_wants       -> ibis_endorses;
+        // pm_variant     -> ev_sub_event;
+        pm_budget      -> pm_valuation;
+        pm_due         -> pm_expires;
+        pm_involves    -> pm_performer;
+        pm_involves    -> pm_recipient;
+        pm_involves    -> pm_responsible;
     }
 
     subgraph {
@@ -103,7 +116,7 @@ digraph {
 	pm_Target  -> pm_budget;
 	pm_Action  -> pm_context;
 	pm_Action  -> pm_dependency;
-	foaf_Agent -> pm_desires;
+	foaf_Agent -> pm_wants;
 	pm_Target  -> pm_due;
 	pm_Target  -> pm_initiates;
 	pm_Action  -> pm_method;
@@ -122,8 +135,8 @@ digraph {
 	pm_budget      -> xsd_decimal;
 	pm_context     -> ibis_State;
 	pm_dependency  -> ibis_State;
-	pm_desires     -> pm_Goal;
 	pm_due         -> xsd_dateTime;
+	pm_expires     -> xsd_dateTime;
 	pm_initiates   -> pm_Task;
 	pm_method      -> pm_Method;
 	pm_outcome     -> ibis_State;
@@ -131,6 +144,8 @@ digraph {
 	pm_responsible -> foaf_Person;
 	pm_status      -> ibis_State;
 	pm_subtask     -> pm_Task;
+	pm_valuation   -> xsd_decimal;
 	pm_variant     -> pm_Action;
+	pm_wants       -> pm_Goal;
     }
 }
