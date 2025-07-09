@@ -622,6 +622,10 @@ Range:
 <a href="https://vocab.methodandstructure.com/process-model#Task"
 rel="rdfs:range"><code>pm:Task</code></a>
 
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/ibis#response"
+rel="rdfs:subPropertyOf"><code>ibis:response</code></a>
+
 Inverse of:  
 <a
 href="https://vocab.methodandstructure.com/process-model#initiated-by"
@@ -936,6 +940,10 @@ rel="rdfs:domain"><code>pm:Task</code></a>
 Range:  
 <a href="https://vocab.methodandstructure.com/process-model#Target"
 rel="rdfs:range"><code>pm:Target</code></a>
+
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/ibis#responds-to"
+rel="rdfs:subPropertyOf"><code>ibis:responds-to</code></a>
 
 Inverse of:  
 <a href="https://vocab.methodandstructure.com/process-model#initiates"
