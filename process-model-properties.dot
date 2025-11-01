@@ -32,14 +32,16 @@ digraph {
 
     subgraph {
         node [style="dashed,rounded"];
-        ev_agent [label="ev:agent"];
-        ev_factor [label="ev:factor"];
-        ev_product [label="ev:product"];
-        ev_sub_event [label="ev:sub_event"];
-        ibis_endorses [label="ibis:endorses"];
-        ibis_response [label="ibis:response"];
-        ibis_responds_to [label="ibis:responds-to"];
-        ibis_specializes [label="ibis:specializes"];
+        ev_agent         [label="ev:agent", href="https://motools.sourceforge.net/event/event.html#term_agent"];
+        ev_factor        [label="ev:factor", href="https://motools.sourceforge.net/event/event.html#term_factor"];
+        ev_product       [label="ev:product", href="https://motools.sourceforge.net/event/event.html#term_product"];
+        ev_sub_event     [label="ev:sub_event" href="https://motools.sourceforge.net/event/event.html#term_sub_event"];
+        ibis_endorses    [label="ibis:endorses", href="https://vocab.methodandstructure.com/ibis#endorses"];
+        ibis_implies     [label="ibis:implies", href="https://vocab.methodandstructure.com/ibis#implies"];
+        ibis_implied_by  [label="ibis:implied-by", href="https://vocab.methodandstructure.com/ibis#implied-by"];
+        ibis_response    [label="ibis:response", href="https://vocab.methodandstructure.com/ibis#response"];
+        ibis_responds_to [label="ibis:responds-to", href="https://vocab.methodandstructure.com/ibis#responds-to"];
+        ibis_specializes [label="ibis:specializes", href="https://vocab.methodandstructure.com/ibis#specializes"];
     }
 
     // datatypes

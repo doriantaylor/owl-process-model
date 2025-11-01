@@ -5,7 +5,7 @@ Author
 rel="dct:creator"><span property="foaf:name">Dorian Taylor</span></a>
 
 Version  
-0.2.1
+0.3
 
 Created  
 July 22, 2009
@@ -20,6 +20,8 @@ March 8, 2020
 April 9, 2025
 
 June 10, 2025
+
+October 31, 2025
 
 Namespace URI  
 <a href="https://vocab.methodandstructure.com/process-model#" about="#"
@@ -286,6 +288,43 @@ The properties in this vocabulary are refined as follows:
 src="https://vocab.methodandstructure.com/process-model-properties" />
 </figure>
 
+<div id="sec-domain-entity" class="section">
+
+### Entity-Related
+
+<div id="dependency" class="section" about="[pm:dependency]"
+typeof="owl:ObjectProperty">
+
+#### `dependency`
+
+Any `ibis:Entity` (and thus `pm:Goal`, `pm:Task`) may depend on the
+resolution of an `ibis:Issue` the `pm:Action` depends on to be
+actionable.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/ibis#Entity"
+rel="rdfs:domain"><code>ibis:Entity</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="rdfs:range"><code>ibis:State</code></a>
+
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/ibis#implies"
+rel="rdfs:subPropertyOf"><code>ibis:implies</code></a>
+
+Inverse of:  
+<a
+href="https://vocab.methodandstructure.com/process-model#dependency-of"
+rel="owl:inverseOf"><code>pm:dependency-of</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+</div>
+
 <div id="sec-domain-state" class="section">
 
 ### State-Related
@@ -308,6 +347,35 @@ rel="rdfs:range"><code>pm:Action</code></a>
 Inverse of:  
 <a href="https://vocab.methodandstructure.com/process-model#context"
 rel="owl:inverseOf"><code>pm:context</code></a>
+
+<a href="https://vocab.methodandstructure.com/process-model#"
+rel="rdfs:isDefinedBy">Back to Top</a>
+
+</div>
+
+<div id="dependency-of" class="section" about="[pm:dependency-of]"
+typeof="owl:ObjectProperty">
+
+#### `dependency-of`
+
+The object `ibis:Entity` depends on the resolution of the subject
+`ibis:State` to be resolved, or otherwise proceed.
+
+Domain:  
+<a href="https://vocab.methodandstructure.com/ibis#State"
+rel="rdfs:domain"><code>ibis:State</code></a>
+
+Range:  
+<a href="https://vocab.methodandstructure.com/ibis#Entity"
+rel="rdfs:range"><code>ibis:Entity</code></a>
+
+Sub-property of:  
+<a href="https://vocab.methodandstructure.com/ibis#implied-by"
+rel="rdfs:subPropertyOf"><code>ibis:implied-by</code></a>
+
+Inverse of:  
+<a href="https://vocab.methodandstructure.com/process-model#dependency"
+rel="owl:inverseOf"><code>pm:dependency</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -678,35 +746,6 @@ Inverse of:
 <a
 href="https://vocab.methodandstructure.com/process-model#contextualizes"
 rel="owl:inverseOf"><code>pm:contextualizes</code></a>
-
-<a href="https://vocab.methodandstructure.com/process-model#"
-rel="rdfs:isDefinedBy">Back to Top</a>
-
-</div>
-
-<div id="dependency" class="section" about="[pm:dependency]"
-typeof="owl:ObjectProperty">
-
-#### `dependency`
-
-An `ibis:State` the `pm:Action` depends on to be actionable.
-
-Domain:  
-<a href="https://vocab.methodandstructure.com/process-model#Action"
-rel="rdfs:domain"><code>pm:Action</code></a>
-
-Range:  
-<a href="https://vocab.methodandstructure.com/ibis#State"
-rel="rdfs:range"><code>ibis:State</code></a>
-
-Sub-property of:  
-<a href="https://vocab.methodandstructure.com/ibis#suggests"
-rel="rdfs:subPropertyOf"><code>ibis:suggests</code></a>
-
-Inverse of:  
-<a
-href="https://vocab.methodandstructure.com/process-model#dependency-of"
-rel="owl:inverseOf"><code>pm:dependency-of</code></a>
 
 <a href="https://vocab.methodandstructure.com/process-model#"
 rel="rdfs:isDefinedBy">Back to Top</a>

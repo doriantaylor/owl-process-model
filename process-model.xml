@@ -31,7 +31,7 @@
         <dt>Author</dt>
         <dd><a rel="dct:creator" href="http://doriantaylor.com/person/dorian-taylor#me"><span property="foaf:name">Dorian Taylor</span></a></dd>
         <dt>Version</dt>
-        <dd property="owl:versionInfo" datatype="xsd:string">0.2.1</dd>
+        <dd property="owl:versionInfo" datatype="xsd:string">0.3</dd>
         <dt>Created</dt>
         <dd property="dct:created" datatype="xsd:dateTime" content="2009-07-23T00:56:12Z">July 22, 2009</dd>
         <dt>Updated</dt>
@@ -40,6 +40,7 @@
         <dd property="dct:modified" datatype="xsd:dateTime" content="2020-03-08T18:58:53Z">March 8, 2020</dd>
         <dd property="dct:modified" datatype="xsd:dateTime" content="2025-04-09T23:18:53Z">April 9, 2025</dd>
         <dd property="dct:modified" datatype="xsd:dateTime" content="2025-06-11T03:15:09Z">June 10, 2025</dd>
+        <dd property="dct:modified" datatype="xsd:dateTime" content="2025-10-31T22:26:31Z">October 31, 2025</dd>
         <dt>Namespace URI</dt>
         <dd><a about="#" rel="sh:namespace vann:preferredNamespaceUri" href="#"><code>https://vocab.methodandstructure.com/process-model#</code></a></dd>
         <dt>Preferred Namespace Prefix</dt>
@@ -162,6 +163,24 @@
       <figure>
         <object type="image/svg+xml" data="process-model-properties.svg"><img src="process-model-properties" alt=""/></object>
       </figure>
+      <section id="sec-domain-entity">
+        <h3>Entity-Related</h3>
+        <section id="dependency" about="[pm:dependency]" typeof="owl:ObjectProperty">
+          <h4><code property="rdfs:label" datatype="xsd:token">dependency</code></h4>
+          <p property="rdfs:comment">Any <code>ibis:Entity</code> (and thus <code>pm:Goal</code>, <code>pm:Task</code>) may depend on the resolution of an <code>ibis:Issue</code> the <code>pm:Action</code> depends on to be actionable.</p>
+          <dl>
+            <dt>Domain:</dt>
+            <dd><a rel="rdfs:domain" href="https://vocab.methodandstructure.com/ibis#Entity"><code>ibis:Entity</code></a></dd>
+            <dt>Range:</dt>
+            <dd><a rel="rdfs:range" href="https://vocab.methodandstructure.com/ibis#State"><code>ibis:State</code></a></dd>
+            <dt>Sub-property of:</dt>
+            <dd><a rel="rdfs:subPropertyOf" href="https://vocab.methodandstructure.com/ibis#implies"><code>ibis:implies</code></a></dd>
+            <dt>Inverse of:</dt>
+            <dd><a rel="owl:inverseOf" href="#dependency-of"><code>pm:dependency-of</code></a></dd>
+          </dl>
+          <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
+        </section>
+      </section>
       <section id="sec-domain-state">
         <h3>State-Related</h3>
         <section id="contextualizes" about="[pm:contextualizes]" typeof="owl:ObjectProperty">
@@ -175,6 +194,22 @@
             <dt>Inverse of:</dt>
             <dd><a rel="owl:inverseOf" href="#context"><code>pm:context</code></a></dd>
          </dl>
+          <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
+        </section>
+        <section id="dependency-of" about="[pm:dependency-of]" typeof="owl:ObjectProperty">
+          <h4><code property="rdfs:label" datatype="xsd:token">dependency-of</code></h4>
+          <p property="rdfs:comment">The object <code>ibis:Entity</code> depends on the resolution of the subject <code>ibis:State</code> to be resolved, or otherwise proceed.</p>
+          <dl>
+            <dt>Domain:</dt>
+            <dd><a rel="rdfs:domain" href="https://vocab.methodandstructure.com/ibis#State"><code>ibis:State</code></a></dd>
+            <dt>Range:</dt>
+            <!--<dd rel="rdfs:range" resource="_:Ezftw07MZDi2WifqVyo7MI">(<span rel="owl:unionOf" resource="_:E1D6y3X9T9YMnB-zWWdkbJ"><a rel="rdf:first" href="#Goal"><code>pm:Goal</code></a> <span about="_:E1D6y3X9T9YMnB-zWWdkbJ" rel="rdf:rest" resource="_:E3Im4fxJQcVazVetDUdquI">&#x222a;</span> <a about="_:E3Im4fxJQcVazVetDUdquI" rel="rdf:first" href="#Task"><code about="_:E3Im4fxJQcVazVetDUdquI" rel="rdf:rest" resource="rdf:nil">pm:Task</code></a></span>)</dd>-->
+            <dd><a rel="rdfs:range" href="https://vocab.methodandstructure.com/ibis#Entity"><code>ibis:Entity</code></a></dd>
+            <dt>Sub-property of:</dt>
+            <dd><a rel="rdfs:subPropertyOf" href="https://vocab.methodandstructure.com/ibis#implied-by"><code>ibis:implied-by</code></a></dd>
+            <dt>Inverse of:</dt>
+            <dd><a rel="owl:inverseOf" href="#dependency"><code>pm:dependency</code></a></dd>
+          </dl>
           <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
         </section>
         <section id="process" about="[pm:process]" typeof="owl:ObjectProperty">
@@ -370,21 +405,6 @@
             <dd><a rel="rdfs:subPropertyOf" resource="ev:factor" href="https://motools.sourceforge.net/event/event.html#term_factor"><code>ev:factor</code></a></dd>
             <dt>Inverse of:</dt>
             <dd><a rel="owl:inverseOf" href="#contextualizes"><code>pm:contextualizes</code></a></dd>
-          </dl>
-          <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
-        </section>
-        <section id="dependency" about="[pm:dependency]" typeof="owl:ObjectProperty">
-          <h4><code property="rdfs:label" datatype="xsd:token">dependency</code></h4>
-          <p property="rdfs:comment">An <code>ibis:State</code> the <code>pm:Action</code> depends on to be actionable.</p>
-          <dl>
-            <dt>Domain:</dt>
-            <dd><a rel="rdfs:domain" href="#Action"><code>pm:Action</code></a></dd>
-            <dt>Range:</dt>
-            <dd><a rel="rdfs:range" href="https://vocab.methodandstructure.com/ibis#State"><code>ibis:State</code></a></dd>
-            <dt>Sub-property of:</dt>
-            <dd><a rel="rdfs:subPropertyOf" href="https://vocab.methodandstructure.com/ibis#suggests"><code>ibis:suggests</code></a></dd>
-            <dt>Inverse of:</dt>
-            <dd><a rel="owl:inverseOf" href="#dependency-of"><code>pm:dependency-of</code></a></dd>
           </dl>
           <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
         </section>
